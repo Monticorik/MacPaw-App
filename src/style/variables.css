@@ -1,0 +1,32 @@
+:root{
+    --purple:     #B4B7FF;
+    --pink:       #FBE0DC;
+    --red:        #FF868E;
+    --orange:     #FFD280;
+    --green:      #97EAB9;
+    --white:      #FFFFFF;
+    --background: #F8F8F7;
+    --gray:       #8C8C8C;
+    --black:      #111111; 
+  
+    /* font-size */
+    --font-lg: 2em;
+    --font-md: 1.2em;
+    --font-sm: calc(7px + 0.6vw);
+    --font-xsm: calc(5px + 0.5vw);
+    
+    
+    
+  }
+  
+  [data-dark-them]{
+    --purple:     #B4B7FF;
+    --pink:       #FBE0DC;
+    --red:        #FF868E;
+    --orange:     #FFD280;
+    --green:      #97EAB9;
+    --white:      #FFFFFF;
+    --background: #F8F8F7;
+    --gray:       #8C8C8C;
+    --black:      #111111; 
+  }

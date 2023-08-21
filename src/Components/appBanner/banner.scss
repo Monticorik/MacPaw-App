@@ -1,0 +1,15 @@
+@import '../../style/variables.css';
+
+.banner{
+
+    margin: 3vh auto;
+    border-radius: 50px;
+    height: 90%;
+    width: 75%;
+    background-color: var(--pink);
+
+    img{
+        width: 42vw;
+        transform: translate(-7%, -5%);
+    }
+}
