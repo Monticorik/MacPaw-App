@@ -45,6 +45,20 @@
                     background-color: var(--pink);
                 }
             }
+
+            &:active{
+                .menu_img{
+                    border-color: var(--pink);
+                }
+
+                .menu_text{
+                    background-color: var(--red);
+                    
+                    span{
+                        color: var(--white);
+                    }
+                }
+            }
         }
     
         &_img{

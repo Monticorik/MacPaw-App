@@ -1,6 +1,7 @@
 import './appWrapper.scss';
 
 const AppWrapper = (props) => {
+    const {withoutTabIndex} = props;
     return (
         <>
             <section className='search_block'>
@@ -17,15 +18,18 @@ const AppWrapper = (props) => {
                     </form>
                 </div>
                 <a  className="likes"
-                    href="#">
+                    href="#"
+                    tabIndex={withoutTabIndex === "likes" ? -1 : 0}>
                     <i className="icon_like"></i>
                 </a>
                 <a  className="favourites"
-                    href="#">
+                    href="#"
+                    tabIndex={withoutTabIndex === "favourites" ? -1 : 0}>
                     <i className="icon_favourite"></i>
                 </a>
                 <a  className="dislikes"
-                    href="#">
+                    href="#"
+                    tabIndex={withoutTabIndex === "dislikes" ? -1 : 0}>
                     <i className="icon_dislike"></i>
                 </a>
             </section>

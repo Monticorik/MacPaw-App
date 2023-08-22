@@ -60,6 +60,7 @@ const BreedsFilter = (props) => {
                     placeholder="Breeds"
                     unstyled
                     openMenuOnFocus
+                    isDisabled
                     // menuIsOpen
                     defaultValue={breedsOptions[0]}
                     options={breedsOptions}

@@ -1,6 +1,10 @@
 import AppHeader from '../appHeader/AppHeader';
-import Breeds from '../breeds/Breeds';
-import Galery from '../galery/Galery';
+// import BreedsPage from '../breedsPage/BreedsPage';
+// import GaleryPage from '../galeryPage/GaleryPage';
+// import LikePage from '../likePage/LikePage';
+// import FavouritePage from '../favouritePage/FavouritePage';
+// import DislikePage from '../dislikePage/DislikePage';
+import BreedsInfoPage from '../breedsInfoPage/BreedsInfoPage';
 
 import '../../style/style.scss';
 
@@ -12,7 +16,7 @@ function App() {
         </div>
         <div className='right_side'>
           <main>
-            <Galery/>
+            <BreedsInfoPage/>
           </main>
         </div>
     </div>
