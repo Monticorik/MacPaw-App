@@ -3,7 +3,7 @@ import "./gridImageSection.scss";
 
 const GridImageSection = () => {
 
-    const rightImagePositionStyle = [
+    const firstImagePositionStyle = [
         {gridArea: "1 / 1 / 3 / 2"},
         {gridArea: "1 / 2 / 2 / 3"},
         {gridArea: "1 / 3 / 2 / 4"},
@@ -11,15 +11,15 @@ const GridImageSection = () => {
         {gridArea: "2 / 2 / 4 / 4"},
     ]
 
-    const leftImagePositionStyle = [
-        {gridArea: "4 / 1 / 5 / 2"},
-        {gridArea: "4 / 2 / 5 / 3"},
-        {gridArea: "4 / 3 / 6 / 4"},
-        {gridArea: "5 / 1 / 7 / 3"},
-        {gridArea: "6 / 3 / 7 / 4"},
+    const secondImagePositionStyle = [
+        {gridArea: "1 / 1 / 2 / 2"},
+        {gridArea: "1 / 2 / 2 / 3"},
+        {gridArea: "1 / 3 / 3 / 4"},
+        {gridArea: "2 / 1 / 4 / 3"},
+        {gridArea: "3 / 3 / 4 / 4"},
     ]
 
-    const imgArr = [
+    const imgList = [
         {src:cat, alt:'cat'},
         {src:cat, alt:'cat'},
         {src:cat, alt:'cat'},
@@ -27,17 +27,14 @@ const GridImageSection = () => {
         {src:cat, alt:'cat'},
     ]
 
-    const setImageLayout = () => {
-        const images = imgArr.map((element, index) => {
-                            const imageGridPosition = index % 10 < 5 ? rightImagePositionStyle[index % 5] : leftImagePositionStyle[index % 5];
-                            return(
-                                <div className="grid_img"
-                                     style={imageGridPosition}
-                                     key={index}>
-                                    <img src={element.src} alt={element.alt}/>
-                                </div>
-                            )
-                       })
+    const setImagesBlock = () => {
+        const images = [];
+
+        for(let i = 0; i < imgList.length; i += 5) {
+            const arr = imgList.slice(i, i + 5);
+            const positionStyleList = i % 10 ? secondImagePositionStyle : firstImagePositionStyle;
+            images.push(imageListHandler(arr, positionStyleList));
+        }
 
         return(
             <>
@@ -46,11 +43,30 @@ const GridImageSection = () => {
         )
     }
 
+    const imageListHandler = (list, positionStyleList) => {
+        const imageList = list.map((image, index) => {
+                                return(
+                                    <div className="grid_img"
+                                        style={positionStyleList[index % 5]}
+                                        key={index}>
+                                        <figure>
+                                            <img src={image.src} alt={image.alt}/>
+                                            <figcaption>{image.alt}</figcaption>
+                                        </figure>
+                                    </div>
+                                )
+                        })
+
+        return(
+            <div className="images_block">
+                {imageList}
+            </div>
+        )
+    }
+
     return(
         <section>
-            <div className="images">
-                {setImageLayout()}
-            </div>
+            {setImagesBlock()}
         </section>
     )
 }

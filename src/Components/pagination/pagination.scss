@@ -36,6 +36,16 @@
         i{
             font-size: var(--font-md);
         }
+
+        &:hover,
+        &:focus{
+            background-color: var(--red);
+
+            i,
+            span{
+                color: var(--white);
+            }
+        }
     }
 
     [disabled]{

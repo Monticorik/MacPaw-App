@@ -7,6 +7,11 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+
+  :focus,
+  :active{
+    outline: none;
+  }
 }
 
 ul,
@@ -41,23 +46,16 @@ p {
   padding: 0;
 }
 
-
-
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0; 
 }
 
-button, 
-select{
+button{
   border: none;
   background-color: var(--background);
-}
-
-select:active, 
-select:focus{
-  outline:none
+  cursor: pointer;
 }
 
 body{

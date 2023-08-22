@@ -14,6 +14,7 @@
         padding: 0 0.5vw;
         height: 100%;
         background-color: var(--background);
+        cursor: pointer !important;
 
         &--menu-is-open{
             border-color: var(--pink);
@@ -27,10 +28,6 @@
 
         &:focus{
             border-color: var(--pink);
-        }
-
-        &:active{
-            border-color: var(--red);
         }
     }
 
@@ -50,6 +47,7 @@
     &__option{
         border-radius: 4px;
         padding: 8px 1vw;
+        cursor: pointer !important;
         
         &:hover{
             background-color: var(--pink);
@@ -71,6 +69,14 @@
             }
         }
     }
+}
+
+label{
+    padding-left: 0.6vw;
+    font-weight: 500;
+    font-size: 0.5vw;
+    color: var(--gray);
+    text-transform: uppercase;
 }
 
 .limit{

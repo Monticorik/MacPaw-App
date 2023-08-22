@@ -32,9 +32,9 @@ const LimitFilter = (props) => {
     const {label} = props;
 
     return (
-        <>
+        <div id="limit_filter">
             {label ? <label htmlFor="limit">Limit</label> : null}
-            <Select id='limit_filter'
+            <Select id='limit'
                     className='limit'
                     classNamePrefix={'limit'}
                     placeholder="Limit"
@@ -44,7 +44,7 @@ const LimitFilter = (props) => {
                     defaultValue={limitOptions[0]}
                     options={limitOptions}
             />     
-        </>
+        </div>
     );
 }
 
@@ -52,9 +52,9 @@ const BreedsFilter = (props) => {
     const {label} = props;
 
     return (
-        <>
-            {label ? <label htmlFor="breeds">breeds</label> : null}
-            <Select id='breeds_filter'
+        <div id='breeds_filter'>
+            {label ? <label htmlFor="breeds">Breeds</label> : null}
+            <Select id='breeds'
                     className='breeds'
                     classNamePrefix={'breeds'}
                     placeholder="Breeds"
@@ -64,7 +64,7 @@ const BreedsFilter = (props) => {
                     defaultValue={breedsOptions[0]}
                     options={breedsOptions}
             />     
-        </>
+        </div>
     );
 }
 
@@ -72,9 +72,9 @@ const OrderFilter = (props) => {
     const {label} = props;
 
     return (
-        <>
-            {label ? <label htmlFor="order">order</label> : null}
-            <Select id='order_filter'
+        <div id='order_filter'>
+            {label ? <label htmlFor="order">Order</label> : null}
+            <Select id='order'
                     className='order'
                     classNamePrefix={'order'}
                     placeholder="Order"
@@ -84,7 +84,7 @@ const OrderFilter = (props) => {
                     defaultValue={orderOptions[0]}
                     options={orderOptions}
             />     
-        </>
+        </div>
     );
 }
 
@@ -92,9 +92,9 @@ const TypeFilter = (props) => {
     const {label} = props;
 
     return (
-        <>
-            {label ? <label htmlFor="type">type</label> : null}
-            <Select id='type_filter'
+        <div id="type_filter">
+            {label ? <label htmlFor="type">Type</label> : null}
+            <Select id='type'
                     className='type'
                     classNamePrefix={'type'}
                     placeholder="Type"
@@ -104,7 +104,7 @@ const TypeFilter = (props) => {
                     defaultValue={typeOptions[0]}
                     options={typeOptions}
             />     
-        </>
+        </div>
     );
 }
 

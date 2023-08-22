@@ -18,6 +18,16 @@
     max-width: 60px;
     font-size: var(--font-lg);
     color: var(--red);
+
+    &:hover,
+    &:focus{
+        background-color: var(--pink);
+    }
+
+    &:active{
+        background-color: var(--red);
+        color: var(--white);
+    }
 }
 
 .search_block{
@@ -45,6 +55,26 @@
                 padding: 2px 1vw;
                 font-size: var(--font-md);
                 color: var(--gray);
+
+                &:hover{
+                    border-color: var(--pink);
+                }
+
+                &:focus{
+                    border-color: var(--red);
+                    
+                    &::placeholder{
+                        opacity: 0;
+                    }
+                }
+
+                &:active{
+                    border-color: var(--red);
+
+                    &::placeholder{
+                        opacity: 0;
+                    }
+                }
             }
     
             .search_button{
@@ -61,8 +91,15 @@
                 height: 2vw;
                 max-height: 40px;
                 background-color: var(--pink);
+                cursor: pointer;
                 font-size: var(--font-md);
                 color: var(--red);
+
+                &:hover,
+                &:focus{
+                    background-color: var(--red);
+                    color: var(--white);
+                }
             }
         }
     }
@@ -80,6 +117,6 @@
     height: fit-content;
     background-color: white;
     border-radius: 1vw;
-    margin-top: 0.5vw;
+    margin: 0.5vw 0 1vw 0;
     padding: 0.6vw;
 }

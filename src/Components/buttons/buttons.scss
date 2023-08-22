@@ -10,17 +10,28 @@
 }
 
 @mixin pink-buttons-style{
+    
+
+
+}
+
+.back_button{
+    @include buttons-style;
     background-color: var(--pink);
     
     i{
         font-size: var(--font-lg);
         color: var(--red);
     }
-}
 
-.back_button{
-    @include buttons-style;
-    @include pink-buttons-style;
+    &:hover,
+    &:focus{
+        background-color: var(--red);
+
+        i{
+            color: var(--white);
+        }
+    }
 }
 
 .call_menu_button{
@@ -33,4 +44,27 @@
 
 .update_button{
     @include buttons-style;
+    background-color: var(--white);
+
+    i{
+        font-size: var(--font-md);
+        color: var(--red);
+    }
+
+    &:hover,
+    &:focus{
+        background-color: var(--pink);
+
+        i{
+            color: var(--red);
+        }
+    }
+
+    &:active{
+        background-color: var(--red);
+
+        i{
+            color: var(--white);
+        }
+    }
 }

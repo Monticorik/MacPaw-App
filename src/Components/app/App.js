@@ -1,5 +1,6 @@
 import AppHeader from '../appHeader/AppHeader';
 import Breeds from '../breeds/Breeds';
+import Galery from '../galery/Galery';
 
 import '../../style/style.scss';
 
@@ -11,7 +12,7 @@ function App() {
         </div>
         <div className='right_side'>
           <main>
-            <Breeds/>
+            <Galery/>
           </main>
         </div>
     </div>
