@@ -1,4 +1,5 @@
 import logo from '../../resources/img/Logo.svg';
+import AppNav from '../appNav/AppNav';
 
 import './appHeader.scss';
 
@@ -14,6 +15,7 @@ const AppHeader = () => {
                 <h1>Hi!</h1>
                 <h2>Welcome to MacPaw Bootcamp 2023</h2>
             </div>
+            <AppNav/>
         </header>
     )
 } 

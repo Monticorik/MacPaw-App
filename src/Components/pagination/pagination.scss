@@ -1,0 +1,51 @@
+@import "../../style/variables.css";
+
+.pagination{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2vw;
+    width: 100%;
+
+    &_prev,
+    &_next{
+        width: 10vw;
+        max-width: 150px;
+        height: 3vw;
+        max-height: 40px;
+        min-height: 20px;
+        border-radius: 0.5vw;
+        background-color: var(--pink);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 0.5vw;
+
+        span, 
+        i {
+            font-weight: 500;
+            color: var(--red);
+            letter-spacing: .1vw;
+            text-transform: uppercase;
+        }
+
+        span{
+            font-size: var(--font-sm);
+        }
+
+        i{
+            font-size: var(--font-md);
+        }
+    }
+
+    [disabled]{
+        background-color: var(--background);
+
+        span,
+        i{
+            color: var(--gray);
+        }
+    }
+
+
+}

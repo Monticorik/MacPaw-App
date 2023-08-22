@@ -1,0 +1,36 @@
+@import "../../resources/icon-fonts/icon-font.css", "../../style/variables.css";
+
+@mixin buttons-style{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    padding: 5px;
+    cursor: pointer;
+}
+
+@mixin pink-buttons-style{
+    background-color: var(--pink);
+    
+    i{
+        font-size: var(--font-lg);
+        color: var(--red);
+    }
+}
+
+.back_button{
+    @include buttons-style;
+    @include pink-buttons-style;
+}
+
+.call_menu_button{
+    @include buttons-style;
+}
+
+.close_button{
+    @include buttons-style;
+}
+
+.update_button{
+    @include buttons-style;
+}

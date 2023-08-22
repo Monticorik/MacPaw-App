@@ -1,5 +1,6 @@
 @import "./variables.css";
 @import "../resources/fonts/font.css";
+@import "../resources/icon-fonts/icon-font.css";
 
 * {
   font-family: "Jost", sans-serif;
@@ -48,13 +49,23 @@ input::-webkit-inner-spin-button {
   margin: 0; 
 }
 
-button{
+button, 
+select{
   border: none;
-  background-color: var(--background)
+  background-color: var(--background);
+}
+
+select:active, 
+select:focus{
+  outline:none
 }
 
 body{
   background-color: var(--background);
+}
+
+main{
+  padding-top: 3vh;
 }
 
 .App{
@@ -62,12 +73,16 @@ body{
 }
 
 .left_side{
+  position: sticky;
+  top: 0;
   width: 50vw;
+  height: fit-content;
   padding-left: 10vw;
 }
 
 .right_side{
   width: 50vw;
+  padding-right: 10vw;
 }
 
 
@@ -87,5 +102,8 @@ body{
 @media (max-width: 576px){
 
 }
+
+
+
 
 

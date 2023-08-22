@@ -15,8 +15,9 @@ const AppNav = () => {
                     <li className="menu_option" 
                         roll={item.text + '_option'}
                         key={index}>
-                        <button id={item.text}
-                                className="menu_button">
+                        <a  id={item.text}
+                            className="menu_button"
+                            href='#'>
                             <div className="menu_img"
                                 style={{backgroundColor: `var(--${item.color})`}}>
                                 <img arya-hidden="true" src={item.src} alt={item.text}/>
@@ -24,7 +25,7 @@ const AppNav = () => {
                             <div className="menu_text">
                                 <span>{item.text}</span>
                             </div>
-                        </button>
+                        </a>
                     </li>
                 )
             })
