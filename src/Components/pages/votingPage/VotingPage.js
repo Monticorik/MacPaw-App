@@ -8,7 +8,7 @@ import cat from "../../../resources/img/news_file_3846_5ea8a69e48534.jpg";
 const VotingPage = () => {
     return(
         <AppWrapper>
-            <aside className="filters_section">
+            <aside className="filters_section voting_page">
                 <BackButton/>
                 <Label text="Voting"/>
                 <UpdateButton/>

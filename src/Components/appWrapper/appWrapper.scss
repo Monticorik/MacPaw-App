@@ -108,10 +108,29 @@
         }
     }
 
-    .likes,
-    .favourites,
-    .dislikes{
+    .like,
+    .favourite,
+    .dislike{
         @include button-for-rate-page;
+
+        &.active{
+            background-color: var(--red);
+            color: var(--white);
+
+            &:hover{
+                background-color: var(--red);
+            }
+
+            &:focus{
+                background-color: var(--red);
+                color: var(--white);
+            }
+
+            &:active{
+                background-color: var(--red);
+                color: var(--white);
+            }
+        }
     }
 
 }

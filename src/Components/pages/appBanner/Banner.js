@@ -1,5 +1,4 @@
-import banner from '../../resources/img/girl-and-pet 1.svg';
-
+import banner from '../../../resources/img/girl-and-pet 1.svg';
 import './banner.scss';
 
 const Banner = () => {

@@ -1,19 +1,17 @@
-//check style after routing;
-
 import AppWrapper from "../../appWrapper/AppWrapper";
 import Label from "../../label/Label";
 import { BackButton } from "../../buttons/Buttons";
 import GridImageSection from "../../gridImageSection/GridImageSection";
 import Pagination from "../../pagination/Pagination";
 
-import "./likePage.scss";
+import "./favouritesPage.scss";
 
-const LikePage = () => {
+const FavouritesPage = () => {
     return(
-        <AppWrapper withoutTabIndex="likes">
-            <aside className="filters_section">
+        <AppWrapper withoutTabIndex="favourites">
+            <aside className="filters_section favourite_page">
                 <BackButton/>
-                <Label text="Likes"/>
+                <Label/>
             </aside>
             <GridImageSection/>
             <Pagination/>
@@ -21,4 +19,4 @@ const LikePage = () => {
     )
 }
 
-export default LikePage;
+export default FavouritesPage;

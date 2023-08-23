@@ -10,7 +10,7 @@ import "./galeryPage.scss";
 const GaleryPage = () => {
     return(
         <AppWrapper>
-            <aside className="filters_section">
+            <aside className="filters_section galery_page">
                 <BackButton/>
                 <Label text="Galery"/>
                 <button className="upload_image">

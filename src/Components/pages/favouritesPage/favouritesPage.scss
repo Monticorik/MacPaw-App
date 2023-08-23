@@ -1,17 +1,6 @@
-@import "../../../style/variables.css", "../../../style/mixin.scss";
+@import "../../../style/variables.css";
 
-.search_block {
-    .favourites,
-    .dislikes{
-        @include rate-nav-color-for-non-active;
-    }
-
-    .likes{
-        @include rate-nav-color-for-active;
-    }
-}
-
-.filters_section{
+.filters_section.favourite_page{
     display: grid;
     grid-template: 100% / repeat(12, 1fr);
     gap: 0.5vw;

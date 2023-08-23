@@ -7,12 +7,12 @@ import { BackButton } from "../../buttons/Buttons";
 import Slider from "react-slick";
 
 import cat from "../../../resources/img/news_file_3846_5ea8a69e48534.jpg";
-import "./breedsInfoPage.scss";
+import "./breedInfoPage.scss";
 import "slick-carousel/slick/slick.css"; 
 import "slick-carousel/slick/slick-theme.css";
 
 
-const BreedsInfoPage = () => {
+const BreedInfoPage = () => {
 
     const imgList = [
         {src:cat, alt: "cat"},
@@ -52,9 +52,9 @@ const BreedsInfoPage = () => {
 
     return(
         <AppWrapper>
-            <aside className="filters_section">
+            <aside className="filters_section breed_info_page">
                 <BackButton/>
-                <Label text="breeds" color="pink"/>
+                <Label color="pink"/>
                 <Label text="breeds id"/>
             </aside>
             <section>
@@ -92,4 +92,4 @@ const BreedsInfoPage = () => {
     )
 }
 
-export default BreedsInfoPage;
+export default BreedInfoPage;

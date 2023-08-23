@@ -4,6 +4,10 @@
     margin-top: 5%;
     width: 5vw;
     min-width: 80px;
+
+    a:focus{
+        border-bottom: 0.2vw solid var(--pink);
+    }
 }
 
 #greating_text{

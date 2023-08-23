@@ -1,6 +1,6 @@
 @import "../../../style/variables.css";
 
-.filters_section{
+.filters_section.galery_page{
     display: grid;
     grid-template: repeat(4, 1fr) / repeat(12, 1fr);
     gap: 0.5vw;

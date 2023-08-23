@@ -1,3 +1,4 @@
+import { NavLink } from 'react-router-dom';
 import voting from '../../resources/img/vote-table.svg';
 import breed from '../../resources/img/pet-breeds.svg';
 import galery from '../../resources/img/images-search.svg';
@@ -15,7 +16,7 @@ const AppNav = () => {
                     <li className="menu_option" 
                         roll={item.text + '_option'}
                         key={index}>
-                        <a  id={item.text}
+                        <NavLink to={item.text} id={item.text}
                             className="menu_button"
                             href='#'>
                             <div className="menu_img"
@@ -25,7 +26,7 @@ const AppNav = () => {
                             <div className="menu_text">
                                 <span>{item.text}</span>
                             </div>
-                        </a>
+                        </NavLink>
                     </li>
                 )
             })

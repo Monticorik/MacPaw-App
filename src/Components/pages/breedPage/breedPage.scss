@@ -9,7 +9,7 @@
     color: var(--gray);
 }
 
-.filters_section{
+.filters_section.breed_page{
     display: grid;
     grid-template: 100% / repeat(12, 1fr);
     gap: 0.5vw;

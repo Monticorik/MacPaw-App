@@ -1,12 +1,16 @@
+import { useLocation } from "react-router-dom";
+
 import './label.scss';
 
 const Label = (props) => {
-    const {text, color = "red",} = props;
+    let defaultLabel = useLocation().pathname;
+    defaultLabel = defaultLabel.slice(1);
+    const {label, color = "red",} = props;
 
     return(
         <div className="label"
              data-color={color}>
-            <span>{text}</span>
+            <span>{label || defaultLabel}</span>
         </div>
     )
 }

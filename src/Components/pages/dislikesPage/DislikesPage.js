@@ -4,14 +4,14 @@ import { BackButton } from "../../buttons/Buttons";
 import GridImageSection from "../../gridImageSection/GridImageSection";
 import Pagination from "../../pagination/Pagination";
 
-import "./favouritePage.scss";
+import "./dislikesPage.scss";
 
-const FavouritePage = () => {
+const DislikesPage = () => {
     return(
-        <AppWrapper withoutTabIndex="favourites">
-            <aside className="filters_section">
+        <AppWrapper withoutTabIndex="dislikes">
+            <aside className="filters_section dislike_page">
                 <BackButton/>
-                <Label text="Favourites"/>
+                <Label/>
             </aside>
             <GridImageSection/>
             <Pagination/>
@@ -19,4 +19,4 @@ const FavouritePage = () => {
     )
 }
 
-export default FavouritePage;
+export default DislikesPage;

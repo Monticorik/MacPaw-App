@@ -6,15 +6,15 @@ import GridImageSection from "../../gridImageSection/GridImageSection";
 import Pagination from "../../pagination/Pagination";
 
 
-import './breedsPage.scss';
+import './breedPage.scss';
 
 
 const BreedsPage = () => {
     return(
         <AppWrapper>
-            <aside className="filters_section">
+            <aside className="filters_section breed_page">
                 <BackButton/>
-                <Label text="Breeds"/>
+                <Label/>
                 <BreedsFilter/>
                 <LimitFilter/>
                 <button className="sort">
