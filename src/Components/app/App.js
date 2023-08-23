@@ -1,10 +1,11 @@
 import AppHeader from '../appHeader/AppHeader';
-// import BreedsPage from '../breedsPage/BreedsPage';
-// import GaleryPage from '../galeryPage/GaleryPage';
-// import LikePage from '../likePage/LikePage';
-// import FavouritePage from '../favouritePage/FavouritePage';
-// import DislikePage from '../dislikePage/DislikePage';
-import BreedsInfoPage from '../breedsInfoPage/BreedsInfoPage';
+// import BreedsPage from '../pages/breedsPage/BreedsPage';
+// import GaleryPage from '../pages/galeryPage/GaleryPage';
+// import LikePage from '../pages/likePage/LikePage';
+// import FavouritePage from '../pages/favouritePage/FavouritePage';
+// import DislikePage from '../pages/dislikePage/DislikePage';
+// import BreedsInfoPage from '../pages/breedsInfoPage/BreedsInfoPage';
+import VotingPage from '../pages/votingPage/VotingPage';
 
 import '../../style/style.scss';
 
@@ -16,7 +17,7 @@ function App() {
         </div>
         <div className='right_side'>
           <main>
-            <BreedsInfoPage/>
+            <VotingPage/>
           </main>
         </div>
     </div>

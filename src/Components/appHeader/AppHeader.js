@@ -12,7 +12,7 @@ const AppHeader = () => {
                 <img src={logo} alt="logo"/>
             </div>
             <div id="greating_text">
-                <h1>Hi!</h1>
+                <h1>Hi!👋</h1>
                 <h2>Welcome to MacPaw Bootcamp 2023</h2>
             </div>
             <AppNav/>

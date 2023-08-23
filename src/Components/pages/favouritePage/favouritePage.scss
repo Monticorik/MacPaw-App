@@ -1,0 +1,30 @@
+@import "../../../style/variables.css", "../../../style/mixin.scss";
+
+.search_block {
+    .likes,
+    .dislikes{
+        @include rate-nav-color-for-non-active;
+    }
+
+    .favourites{
+        @include rate-nav-color-for-active;
+    }
+}
+
+.filters_section{
+    display: grid;
+    grid-template: 100% / repeat(12, 1fr);
+    gap: 0.5vw;
+    height: 3vw;
+    max-height: 40px;
+    min-height: 25px;
+    margin-bottom: 0.6vw;
+
+    .back_button{
+        grid-column: 1 / 2;
+    }
+
+    .label{
+        grid-column: 2 / 5;
+    }
+}

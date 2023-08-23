@@ -1,0 +1,46 @@
+@import "../../../style/variables.css";
+
+@mixin sort-buttons-style{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    font-size: var(--font-lg);
+    color: var(--gray);
+}
+
+.filters_section{
+    display: grid;
+    grid-template: 100% / repeat(12, 1fr);
+    gap: 0.5vw;
+    height: 3vw;
+    max-height: 40px;
+    min-height: 25px;
+    margin-bottom: 0.6vw;
+
+    .back_button{
+        grid-column: 1 / 2;
+    }
+
+    .label{
+        grid-column: 2 / 5;
+    }
+
+    #breeds_filter{
+        grid-column: 5 / 9;
+    }
+
+    #limit_filter{
+        grid-column: 9 / 11;
+    }
+
+    .sort{
+        grid-column: 11 / 12;
+        @include sort-buttons-style;
+    }
+
+    .sort_revers{
+        grid-column: 12 / 13;
+        @include sort-buttons-style;
+    }
+}
