@@ -1,9 +1,11 @@
+import { Link, useLocation } from "react-router-dom";
 import PropTypes from 'prop-types';
 
 import "./gridImageSection.scss";
 
 const GridImageSection = (props) => {
     const {viewImages} = props;
+    const pageName = useLocation().pathname.slice(1);
 
     const firstImagePositionStyle = [
         {gridArea: "1 / 1 / 3 / 2"},
@@ -41,15 +43,13 @@ const GridImageSection = (props) => {
     };
 
     const imageListHandler = (imageList, positionStyleList) => {
-        const images = imageList.map((image, index) => {
+        const images = imageList.map((breed, index) => {
                                 return(
                                     <div className="grid_img"
                                         style={positionStyleList[index % 5]}
-                                        key={image.id}>
-                                        <figure>
-                                            <img src={image.image} alt={image.name}/>
-                                            <figcaption>{image.name}</figcaption>
-                                        </figure>
+                                        key={breed.id}>
+                                        {pageName === 'breed' ? <ViewBreedFigcaption breed={breed}/> :
+                                         pageName !== 'breed' ? <figcaption>not breed page</figcaption> : null}
                                     </div>
                                 );
                         });
@@ -70,6 +70,23 @@ const GridImageSection = (props) => {
 
 GridImageSection.propTypes = {
     viewImages: PropTypes.arrayOf(PropTypes.object)
+};
+
+const ViewBreedFigcaption = ({breed}) => {
+    const {id, name, src} = breed;
+    console.log(breed, id, name, src);
+    return (
+        <Link to={`/breed/${id}`} breed={breed}>
+            <figure>
+                <img src={src} alt={name}/>
+                <figcaption>{name}</figcaption>
+            </figure>
+        </Link>
+    );
+};
+
+ViewBreedFigcaption.propTypes = {
+    breed: PropTypes.object
 };
 
 export default GridImageSection;

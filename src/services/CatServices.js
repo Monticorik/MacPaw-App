@@ -16,7 +16,7 @@ const useCatServices = () => {
         return {
             id: breed.id,
             name: breed.name,
-            image: `https://cdn2.thecatapi.com/images/${breed.reference_image_id}.jpg`,
+            src: `https://cdn2.thecatapi.com/images/${breed.reference_image_id}.jpg`,
             description: breed.description,
             temperament: breed.temperament,
             origin: breed.origin ,

@@ -79,7 +79,7 @@ const BreedsFilter = (props) => {
 BreedsFilter.propTypes = {
     label: PropTypes.bool,
     onChooseBreed: PropTypes.func,
-    breedsOptions: PropTypes.arrayOf(PropTypes.string),
+    breedsOptions: PropTypes.arrayOf(PropTypes.object),
 };
 
 const OrderFilter = (props) => {
