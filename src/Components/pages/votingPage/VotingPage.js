@@ -18,26 +18,26 @@ const VotingPage = () => {
                     <img src={cat} alt="cat" />
                 </div>
                 <div className="voting_button_block">
-                    <button class="add_to_like">
-                        <i class="icon_like"></i>
+                    <button className="add_to_like">
+                        <i className="icon_like"></i>
                     </button>
-                    <button class="add_to_favourite">
-                        <i class="icon_favourite"></i>
+                    <button className="add_to_favourite">
+                        <i className="icon_favourite"></i>
                     </button>
-                    <button class="add_to_dislike">
-                        <i class="icon_dislike"></i>
+                    <button className="add_to_dislike">
+                        <i className="icon_dislike"></i>
                     </button>
                 </div>
             </section>
             <section className="log_block">
-                <div class="log_row">
-                    <span class="time">22:06</span>
-                    <span class="log_text">Image ID: <strong>3ll</strong> was added to Likes</span>
-                    <i class="icon_like"></i>
+                <div className="log_row">
+                    <span className="time">22:06</span>
+                    <span className="log_text">Image ID: <strong>3ll</strong> was added to Likes</span>
+                    <i className="icon_like"></i>
                 </div>
             </section>
         </AppWrapper>
-    )
-}
+    );
+};
 
 export default VotingPage;

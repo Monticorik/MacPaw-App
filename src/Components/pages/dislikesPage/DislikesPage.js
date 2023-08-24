@@ -16,7 +16,7 @@ const DislikesPage = () => {
             <GridImageSection/>
             <Pagination/>
         </AppWrapper>
-    )
-}
+    );
+};
 
 export default DislikesPage;

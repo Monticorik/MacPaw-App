@@ -9,7 +9,7 @@ const GridImageSection = () => {
         {gridArea: "1 / 3 / 2 / 4"},
         {gridArea: "3 / 1 / 4 / 2"},
         {gridArea: "2 / 2 / 4 / 4"},
-    ]
+    ];
 
     const secondImagePositionStyle = [
         {gridArea: "1 / 1 / 2 / 2"},
@@ -17,7 +17,7 @@ const GridImageSection = () => {
         {gridArea: "1 / 3 / 3 / 4"},
         {gridArea: "2 / 1 / 4 / 3"},
         {gridArea: "3 / 3 / 4 / 4"},
-    ]
+    ];
 
     const imgList = [
         {src:cat, alt:'cat'},
@@ -25,7 +25,7 @@ const GridImageSection = () => {
         {src:cat, alt:'cat'},
         {src:cat, alt:'cat'},
         {src:cat, alt:'cat'},
-    ]
+    ];
 
     const setImagesBlock = () => {
         const images = [];
@@ -40,8 +40,8 @@ const GridImageSection = () => {
             <>
                 {images}
             </>
-        )
-    }
+        );
+    };
 
     const imageListHandler = (list, positionStyleList) => {
         const imageList = list.map((image, index) => {
@@ -54,21 +54,21 @@ const GridImageSection = () => {
                                             <figcaption>{image.alt}</figcaption>
                                         </figure>
                                     </div>
-                                )
-                        })
+                                );
+                        });
 
         return(
             <div className="images_block">
                 {imageList}
             </div>
-        )
-    }
+        );
+    };
 
     return(
         <section>
             {setImagesBlock()}
         </section>
-    )
-}
+    );
+};
 
 export default GridImageSection;

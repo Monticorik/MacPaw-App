@@ -18,7 +18,7 @@ const LikesPage = () => {
             <GridImageSection/>
             <Pagination/>
         </AppWrapper>
-    )
-}
+    );
+};
 
 export default LikesPage;

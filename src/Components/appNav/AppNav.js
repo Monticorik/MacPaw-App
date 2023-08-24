@@ -3,7 +3,7 @@ import voting from '../../resources/img/vote-table.svg';
 import breed from '../../resources/img/pet-breeds.svg';
 import galery from '../../resources/img/images-search.svg';
 
-import './appNav.scss'
+import './appNav.scss';
 
 const AppNav = () => {
     const menuArguments = [{src: voting, text: 'voting', color: 'purple'},
@@ -28,13 +28,13 @@ const AppNav = () => {
                             </div>
                         </NavLink>
                     </li>
-                )
-            })
+                );
+            });
         return (
             <ul className="menu">
                 {menuList}
             </ul>
-        )
+        );
     };
 
     return (
@@ -42,8 +42,8 @@ const AppNav = () => {
                 <span>Lets start using The Cat API</span>
                 {getMenuList()}
         </nav>
-    )
-}
+    );
+};
 
 
 export default AppNav;

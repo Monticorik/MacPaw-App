@@ -14,7 +14,7 @@ const Pagination = () => {
                 <i className="icon_arrow_right"></i>
             </button>
         </nav>
-    )
-}
+    );
+};
 
 export default Pagination;

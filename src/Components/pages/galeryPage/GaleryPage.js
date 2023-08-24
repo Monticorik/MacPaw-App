@@ -30,7 +30,7 @@ const GaleryPage = () => {
             <GridImageSection/>
             <Pagination/>
         </AppWrapper>
-    )
-}
+    );
+};
 
 export default GaleryPage;

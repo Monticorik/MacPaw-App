@@ -1,6 +1,7 @@
-import './appWrapper.scss';
 import { NavLink } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
+import './appWrapper.scss';
 import "../../style/mixin.scss";
 
 const AppWrapper = (props) => {
@@ -41,7 +42,12 @@ const AppWrapper = (props) => {
                 {props.children}
             </section>
         </>
-    )
-}
+    );
+};
 
-export default AppWrapper
+AppWrapper.propTypes = {
+    withoutTabIndex: PropTypes.bool,
+    children: PropTypes.node,
+};
+
+export default AppWrapper;

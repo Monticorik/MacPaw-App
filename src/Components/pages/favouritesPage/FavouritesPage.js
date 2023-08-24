@@ -16,7 +16,7 @@ const FavouritesPage = () => {
             <GridImageSection/>
             <Pagination/>
         </AppWrapper>
-    )
-}
+    );
+};
 
 export default FavouritesPage;

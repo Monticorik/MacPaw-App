@@ -20,14 +20,14 @@ const BreedInfoPage = () => {
         {src:cat, alt: "cat"},
         {src:cat, alt: "cat"},
         {src:cat, alt: "cat"},
-    ]
+    ];
 
     const setSlider = () => {
         const slides = imgList.map((img, index) => {
             return(
-                <img src={img.src} alt={img.alt}/>
-            )
-        })
+                <img src={img.src} alt={img.alt} key={index}/>
+            );
+        });
 
         const sliderSettings = {
             dots: true,
@@ -41,14 +41,14 @@ const BreedInfoPage = () => {
                   <ul> {dots} </ul>
                 </div>
               ),
-        }
+        };
 
         return(
             <Slider {...sliderSettings}>
                 {slides}
             </Slider>
-        )
-    }
+        );
+    };
 
     return(
         <AppWrapper>
@@ -89,7 +89,7 @@ const BreedInfoPage = () => {
                 </div>
             </section>
         </AppWrapper>
-    )
-}
+    );
+};
 
 export default BreedInfoPage;

@@ -4,8 +4,6 @@ import AppNav from '../appNav/AppNav';
 import './appHeader.scss';
 
 const AppHeader = () => {
-    
-
     return (
         <header>
             <div id="logo">
@@ -17,7 +15,7 @@ const AppHeader = () => {
             </div>
             <AppNav/>
         </header>
-    )
-} 
+    );
+};
 
 export default AppHeader;

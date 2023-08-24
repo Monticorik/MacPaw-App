@@ -1,7 +1,8 @@
 //All filters made with using "react-select".
 //Documentation for this API - https://react-select.com/home;
 
-import Select from 'react-select'
+import PropTypes from 'prop-types';
+import Select from 'react-select';
 
 import "./pageFilters.scss";
 
@@ -10,23 +11,23 @@ const limitOptions = [
     { value: '10', label: 'Limit: 10', },
     { value: '15', label: 'Limit: 15', },
     { value: '20', label: 'Limit: 20', },
-]
+];
 
 const breedsOptions = [
     { value: 'All', label: 'All breeds', },
-]
+];
 
 const orderOptions = [
     { value: 'Random', label: 'Random', },
     { value: 'Desc', label: 'Desc', },
     { value: 'Asc', label: 'Asc', },
-]
+];
 
 const typeOptions = [
     { value: 'All', label: 'All', },
     { value: 'Static', label: 'Static', },
     { value: 'Animated', label: 'Animated', },
-]
+];
 
 const LimitFilter = (props) => {
     const {label} = props;
@@ -46,7 +47,11 @@ const LimitFilter = (props) => {
             />     
         </div>
     );
-}
+};
+
+LimitFilter.propTypes = {
+    label: PropTypes.bool
+};
 
 const BreedsFilter = (props) => {
     const {label} = props;
@@ -67,7 +72,11 @@ const BreedsFilter = (props) => {
             />     
         </div>
     );
-}
+};
+
+BreedsFilter.propTypes = {
+    label: PropTypes.bool
+};
 
 const OrderFilter = (props) => {
     const {label} = props;
@@ -87,7 +96,11 @@ const OrderFilter = (props) => {
             />     
         </div>
     );
-}
+};
+
+OrderFilter.propTypes = {
+    label: PropTypes.bool
+};
 
 const TypeFilter = (props) => {
     const {label} = props;
@@ -107,6 +120,11 @@ const TypeFilter = (props) => {
             />     
         </div>
     );
-}
+};
+
+TypeFilter.propTypes = {
+    label: PropTypes.bool
+};
+
 
 export {LimitFilter, BreedsFilter, OrderFilter, TypeFilter};

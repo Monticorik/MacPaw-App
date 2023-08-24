@@ -27,7 +27,7 @@ const BreedsPage = () => {
             <GridImageSection/>
             <Pagination/>
         </AppWrapper>
-    )
-}
+    );
+};
 
 export default BreedsPage;
