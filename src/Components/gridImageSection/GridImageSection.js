@@ -1,7 +1,9 @@
-import cat from "../../resources/img/news_file_3846_5ea8a69e48534.jpg";
+import PropTypes from 'prop-types';
+
 import "./gridImageSection.scss";
 
-const GridImageSection = () => {
+const GridImageSection = (props) => {
+    const {viewImages} = props;
 
     const firstImagePositionStyle = [
         {gridArea: "1 / 1 / 3 / 2"},
@@ -19,19 +21,14 @@ const GridImageSection = () => {
         {gridArea: "3 / 3 / 4 / 4"},
     ];
 
-    const imgList = [
-        {src:cat, alt:'cat'},
-        {src:cat, alt:'cat'},
-        {src:cat, alt:'cat'},
-        {src:cat, alt:'cat'},
-        {src:cat, alt:'cat'},
-    ];
-
     const setImagesBlock = () => {
         const images = [];
 
-        for(let i = 0; i < imgList.length; i += 5) {
-            const arr = imgList.slice(i, i + 5);
+        //this cicle divide image array on chunk with 5 objects
+        for(let i = 0; i < viewImages.length; i += 5) {
+            const arr = viewImages.slice(i, i + 5);
+            //index(i) can only be 0, 5, 10, 15, etc.
+            //if 'i' has a remainder when divided by 10, we return the correct position style array
             const positionStyleList = i % 10 ? secondImagePositionStyle : firstImagePositionStyle;
             images.push(imageListHandler(arr, positionStyleList));
         }
@@ -43,15 +40,15 @@ const GridImageSection = () => {
         );
     };
 
-    const imageListHandler = (list, positionStyleList) => {
-        const imageList = list.map((image, index) => {
+    const imageListHandler = (imageList, positionStyleList) => {
+        const images = imageList.map((image, index) => {
                                 return(
                                     <div className="grid_img"
                                         style={positionStyleList[index % 5]}
-                                        key={index}>
+                                        key={image.id}>
                                         <figure>
-                                            <img src={image.src} alt={image.alt}/>
-                                            <figcaption>{image.alt}</figcaption>
+                                            <img src={image.image} alt={image.name}/>
+                                            <figcaption>{image.name}</figcaption>
                                         </figure>
                                     </div>
                                 );
@@ -59,7 +56,7 @@ const GridImageSection = () => {
 
         return(
             <div className="images_block">
-                {imageList}
+                {images}
             </div>
         );
     };
@@ -69,6 +66,10 @@ const GridImageSection = () => {
             {setImagesBlock()}
         </section>
     );
+};
+
+GridImageSection.propTypes = {
+    viewImages: PropTypes.arrayOf(PropTypes.object)
 };
 
 export default GridImageSection;

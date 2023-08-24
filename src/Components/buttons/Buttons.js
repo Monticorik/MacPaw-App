@@ -1,8 +1,17 @@
+import { useNavigate } from "react-router-dom";
+
 import "./buttons.scss";
 
 const BackButton = () => {
+    const navigate = useNavigate();
+
+    const onGoBack = () => {
+        navigate(-1);
+    };
+
     return(
-        <button className="back_button">
+        <button className="back_button"
+                onClick={onGoBack}>
             <i className="icon_arrow_left"></i>
         </button>
     );

@@ -2,7 +2,7 @@ import { NavLink } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 import './appWrapper.scss';
-import "../../style/mixin.scss";
+
 
 const AppWrapper = (props) => {
     const {withoutTabIndex} = props;
@@ -22,19 +22,18 @@ const AppWrapper = (props) => {
                     </form>
                 </div>
                 <NavLink to="/likes" 
-                         className="like"
-                         tabIndex={withoutTabIndex === "likes" ? -1 : 0}
-                         >
+                         className="likes"
+                         tabIndex={withoutTabIndex === 'likes' ? -1 : null}>
                     <i className="icon_like"></i>
                 </NavLink>
                 <NavLink to="/favourites" 
-                         className="favourite"
-                         tabIndex={withoutTabIndex === "favourites" ? -1 : 0}>
+                         className="favourites"
+                         tabIndex={withoutTabIndex === 'favourites' ? -1 : null}>
                     <i className="icon_favourite"></i>
                 </NavLink>
                 <NavLink to="/dislikes" 
-                         className="dislike"
-                         tabIndex={withoutTabIndex === "dislikes" ? -1 : 0}>
+                         className="dislikes"
+                         tabIndex={withoutTabIndex === 'dislikes' ? -1 : null}>
                     <i className="icon_dislike"></i>
                 </NavLink>
             </section>

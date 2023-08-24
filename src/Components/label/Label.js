@@ -4,8 +4,7 @@ import PropTypes from 'prop-types';
 import './label.scss';
 
 const Label = (props) => {
-    let defaultLabel = useLocation().pathname;
-    defaultLabel = defaultLabel.slice(1);
+    const defaultLabel = useLocation().pathname.slice(1);
     const {label, color = "red",} = props;
 
     return(

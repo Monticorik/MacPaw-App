@@ -4,9 +4,16 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    border: 2px solid var(--background);
     border-radius: 10px;
     font-size: var(--font-lg);
     color: var(--gray);
+
+    &:hover,
+    &:focus{
+        border-color: var(--pink);
+        color: var(--red); 
+    }
 }
 
 .filters_section.breed_page{

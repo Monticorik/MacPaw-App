@@ -108,9 +108,9 @@
         }
     }
 
-    .like,
-    .favourite,
-    .dislike{
+    .likes,
+    .favourites,
+    .dislikes{
         @include button-for-rate-page;
 
         &.active{

@@ -6,16 +6,9 @@ import Select from 'react-select';
 
 import "./pageFilters.scss";
 
-const limitOptions = [
-    { value: '5', label: 'Limit: 5', },
-    { value: '10', label: 'Limit: 10', },
-    { value: '15', label: 'Limit: 15', },
-    { value: '20', label: 'Limit: 20', },
-];
 
-const breedsOptions = [
-    { value: 'All', label: 'All breeds', },
-];
+
+
 
 const orderOptions = [
     { value: 'Random', label: 'Random', },
@@ -30,7 +23,13 @@ const typeOptions = [
 ];
 
 const LimitFilter = (props) => {
-    const {label} = props;
+    const {onChooseLimit, label} = props;
+    const limitOptions = [
+        { value: '5', label: 'Limit: 5', },
+        { value: '10', label: 'Limit: 10', },
+        { value: '15', label: 'Limit: 15', },
+        { value: '20', label: 'Limit: 20', },
+    ];
 
     return (
         <div id="limit_filter">
@@ -41,6 +40,7 @@ const LimitFilter = (props) => {
                     placeholder="Limit"
                     unstyled
                     openMenuOnFocus
+                    onChange={onChooseLimit}
                     // menuIsOpen
                     defaultValue={limitOptions[0]}
                     options={limitOptions}
@@ -50,11 +50,12 @@ const LimitFilter = (props) => {
 };
 
 LimitFilter.propTypes = {
-    label: PropTypes.bool
+    label: PropTypes.bool,
+    onChooseLimit: PropTypes.func,
 };
 
 const BreedsFilter = (props) => {
-    const {label} = props;
+    const {onChooseBreed, breedsOptions, label} = props;
 
     return (
         <div id='breeds_filter'>
@@ -65,7 +66,8 @@ const BreedsFilter = (props) => {
                     placeholder="Breeds"
                     unstyled
                     openMenuOnFocus
-                    isDisabled
+                    menuShouldScrollIntoView
+                    onChange={onChooseBreed}
                     // menuIsOpen
                     defaultValue={breedsOptions[0]}
                     options={breedsOptions}
@@ -75,7 +77,9 @@ const BreedsFilter = (props) => {
 };
 
 BreedsFilter.propTypes = {
-    label: PropTypes.bool
+    label: PropTypes.bool,
+    onChooseBreed: PropTypes.func,
+    breedsOptions: PropTypes.arrayOf(PropTypes.string),
 };
 
 const OrderFilter = (props) => {
