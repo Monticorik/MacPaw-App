@@ -6,22 +6,6 @@ import Select from 'react-select';
 
 import "./pageFilters.scss";
 
-
-
-
-
-const orderOptions = [
-    { value: 'Random', label: 'Random', },
-    { value: 'Desc', label: 'Desc', },
-    { value: 'Asc', label: 'Asc', },
-];
-
-const typeOptions = [
-    { value: 'All', label: 'All', },
-    { value: 'Static', label: 'Static', },
-    { value: 'Animated', label: 'Animated', },
-];
-
 const LimitFilter = (props) => {
     const {onChooseLimit, label} = props;
     const limitOptions = [
@@ -40,7 +24,9 @@ const LimitFilter = (props) => {
                     placeholder="Limit"
                     unstyled
                     openMenuOnFocus
-                    onChange={onChooseLimit}
+                    onChange={option => {
+                        onChooseLimit(option.value);
+                    }}
                     // menuIsOpen
                     defaultValue={limitOptions[0]}
                     options={limitOptions}
@@ -56,7 +42,6 @@ LimitFilter.propTypes = {
 
 const BreedsFilter = (props) => {
     const {onChooseBreed, breedsOptions, label} = props;
-
     return (
         <div id='breeds_filter'>
             {label ? <label htmlFor="breeds">Breeds</label> : null}
@@ -67,7 +52,7 @@ const BreedsFilter = (props) => {
                     unstyled
                     openMenuOnFocus
                     menuShouldScrollIntoView
-                    onChange={onChooseBreed}
+                    onChange={(option) => onChooseBreed(option.value)}
                     // menuIsOpen
                     defaultValue={breedsOptions[0]}
                     options={breedsOptions}
@@ -83,7 +68,12 @@ BreedsFilter.propTypes = {
 };
 
 const OrderFilter = (props) => {
-    const {label} = props;
+    const {onChooseOrder, label} = props;
+    const orderOptions = [
+        { value: 'RANDOM', label: 'Random', },
+        { value: 'DESC', label: 'Desc', },
+        { value: 'ASC', label: 'Asc', },
+    ];
 
     return (
         <div id='order_filter'>
@@ -94,6 +84,7 @@ const OrderFilter = (props) => {
                     placeholder="Order"
                     unstyled
                     openMenuOnFocus
+                    onChange={(option) => onChooseOrder(option.value)}
                     // menuIsOpen
                     defaultValue={orderOptions[0]}
                     options={orderOptions}
@@ -103,11 +94,17 @@ const OrderFilter = (props) => {
 };
 
 OrderFilter.propTypes = {
+    onChooseOrder: PropTypes.func,
     label: PropTypes.bool
 };
 
 const TypeFilter = (props) => {
-    const {label} = props;
+    const {onChooseType, label} = props;
+    const typeOptions = [
+        { value: 'gif,jpg,png', label: 'All', },
+        { value: 'jpg,png', label: 'Static', },
+        { value: 'gif', label: 'Animated', },
+    ];
 
     return (
         <div id="type_filter">
@@ -118,6 +115,7 @@ const TypeFilter = (props) => {
                     placeholder="Type"
                     unstyled
                     openMenuOnFocus
+                    onChange={(option) => onChooseType(option.value)}
                     // menuIsOpen
                     defaultValue={typeOptions[0]}
                     options={typeOptions}
@@ -127,6 +125,7 @@ const TypeFilter = (props) => {
 };
 
 TypeFilter.propTypes = {
+    onChooseType: PropTypes.func,
     label: PropTypes.bool
 };
 

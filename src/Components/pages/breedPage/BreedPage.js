@@ -17,7 +17,7 @@ const BreedsPage = () => {
     const {loading, getAllBreeds} = useCatServices();
     const [allBreeds, setAllBreeds] = useState([]);
     const [viewBreeds, setViewBreeds] = useState(null);
-    const [breedsOptions, setBreedsOptions] = useState([{ value: 'All', label: 'All breeds', }]);
+    const [breedsOptions, setBreedsOptions] = useState([{ value: '', label: 'All breeds', }]);
     const [sortBtnDisabled, setSortBtnDisabled] = useState({sort: false, reversSort: true});
     const [paginationDisabled, setPaginationDisabled] = useState({prev: true, next: true});
     const [offset, setOffset] = useState(0);
@@ -89,8 +89,8 @@ const BreedsPage = () => {
         setViewBreeds(() => allBreeds.slice(offset, offset + limit));
 
         setPaginationDisabled(() => ({
-            prev: !offset ? true: false,
-            next: viewBreeds?.length < limit ? true : false,
+            prev: !offset,
+            next: viewBreeds?.length < limit,
         }));
     }, [limit, offset]);
 

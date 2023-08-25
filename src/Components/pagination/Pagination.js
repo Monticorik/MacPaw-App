@@ -3,18 +3,19 @@ import PropTypes from 'prop-types';
 import "./pagination.scss";
 
 const Pagination = (props) => {
-    const {prev, next} = props.paginationDisabled;
-    const {onPaginationNext, onPaginationPrev} = props;
+    // const {prev, next} = props.paginationDisabled || {prev: true, next: true};
+    const {prevDisabled, nextDisabled, onPaginationNext, onPaginationPrev} = props;
+
     return(
         <nav className="pagination">
             <button className="pagination_prev"
-                    disabled={prev}
+                    disabled={prevDisabled}
                     onClick={onPaginationPrev}>
                 <i className="icon_arrow_left"></i>
                 <span>prev</span>
             </button>
             <button className="pagination_next"
-                    disabled={next}
+                    disabled={nextDisabled}
                     onClick={onPaginationNext}>
                 <span>next</span>
                 <i className="icon_arrow_right"></i>
@@ -24,7 +25,9 @@ const Pagination = (props) => {
 };
 
 Pagination.propTypes = {
-    paginationDisabled: PropTypes.object,
+    // paginationDisabled: PropTypes.object,
+    prevDisabled: PropTypes.bool,
+    nextDisabled: PropTypes.bool,
     onPaginationNext: PropTypes.func,
     onPaginationPrev: PropTypes.func,
 };

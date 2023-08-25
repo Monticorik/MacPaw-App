@@ -21,10 +21,8 @@ const BreedInfoPage = () => {
     const {getAllImages, loading} = useCatServices();
     const [images, setImages] = useState(null);
 
-    const limit = 15;
-
     useEffect(() => {
-        getAllImages(limit, undefined, undefined, undefined, breedId)
+        getAllImages({breedId})
         .then(res => {
             setImages(res);
         });

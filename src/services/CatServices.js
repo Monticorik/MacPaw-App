@@ -4,17 +4,18 @@ const useCatServices = () => {
     const {loading, error, request, clearError} = useHttp();
     const _apiBase = 'https://api.thecatapi.com/v1/';
     const _apiKey = 'api_key=e807a068-7ac5-4fc5-9c73-9e2c858d1264';
-    const _limit = 5;
 
     const getAllBreeds = async () => {
         const res = await request(`${_apiBase}breeds`);
-        console.log('getAllBreeds');
         return res.map(_transformBreeds);
     };
 
-    const getAllImages = async (limit = _limit, page = 0, order='ASC', type = 'jpg,png', breedId = '' ) => {
+    const getAllImages = async ({limit = 50, page = 0, order = 'ASC', type ='jpg,png', breedId = ''}) => {
+        if(breedId){
+            order = 'ASC';
+        }
+
         const res = await request(`${_apiBase}images/search?limit=${limit}&page=${page}&order=${order}&mime_types=${type}&breed_ids=${breedId}&${_apiKey}`);
-        console.log('getAllImages');
         return res.map(_transformImages);
     };
 

@@ -33,6 +33,7 @@
         object-fit: contain;
         border-radius: 20px;
         width: auto !important;
+        max-width: 100%;
         position: relative;
         left: 50%;
         transform: translateX(-50%);
