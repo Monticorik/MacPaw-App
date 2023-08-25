@@ -155,7 +155,7 @@
         background-color: var(--background);
 
         .time{
-            flex-basis: 15%;
+            flex-basis: 25%;
             border-radius: 0.5vw;
             padding: 0.3vw 0;
             background-color: white;
@@ -185,6 +185,10 @@
             color: var(--green);
         }
 
+        .icon_dislike{
+            color: var(--orange);
+        }
+
         .icon_favourite{
             color: var(--red);
         }
@@ -193,6 +197,8 @@
             color: var(--orange);
         }
     }
+
+    &::-webkit-scrollbar-thumb {
+        border-color: var(--white);
+    }
 }
-
-
