@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import "./pagination.scss";
 
 const Pagination = (props) => {
-    // const {prev, next} = props.paginationDisabled || {prev: true, next: true};
     const {prevDisabled, nextDisabled, onPaginationNext, onPaginationPrev} = props;
 
     return(
@@ -25,7 +24,6 @@ const Pagination = (props) => {
 };
 
 Pagination.propTypes = {
-    // paginationDisabled: PropTypes.object,
     prevDisabled: PropTypes.bool,
     nextDisabled: PropTypes.bool,
     onPaginationNext: PropTypes.func,

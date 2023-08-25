@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 
 import AppWrapper from "../../appWrapper/AppWrapper";
 import Label from "../../label/Label";
@@ -15,53 +15,70 @@ import './breedPage.scss';
 
 const BreedsPage = () => {
     const {loading, getAllBreeds} = useCatServices();
-    const [allBreeds, setAllBreeds] = useState([]);
-    const [viewBreeds, setViewBreeds] = useState(null);
-    const [breedsOptions, setBreedsOptions] = useState([{ value: '', label: 'All breeds', }]);
-    const [sortBtnDisabled, setSortBtnDisabled] = useState({sort: false, reversSort: true});
-    const [paginationDisabled, setPaginationDisabled] = useState({prev: true, next: true});
-    const [offset, setOffset] = useState(0);
-    const [limit, setLimit] = useState(5);
 
-    const breedsOptionsHandler = () =>{
-        const options = allBreeds.map(breed => {
-            return{
-                value: breed.id,
-                label: breed.name,
-            };
-        });
-        setBreedsOptions([breedsOptions[0], ...options]);
+    //option and images
+    const [allBreeds, setAllBreeds] = useState([]);
+    const [viewBreeds, setViewBreeds] = useState([]);
+    const [breedsOptions, setBreedsOptions] = useState([{ value: '', label: 'All breeds', }]);
+
+    //filters
+    const limit = useRef(5);
+    const sort = useRef(false);
+    const reversSort = useRef(true);
+
+    //pagination
+    const [prevDisabled, setPrevDisabled] = useState(true);
+    const [nextDisabled, setNextDisabled] = useState(true);
+    const offset = useRef(0);
+
+    const onSetViewImages = () => {
+        const showImageLength = allBreeds.slice((offset.current), (offset.current + limit.current)).length;
+        showImageLength < limit ? setNextDisabled(true) : setNextDisabled(false);
+        offset.current === 0 ? setPrevDisabled(true) : setPrevDisabled(false);
+
+        setViewBreeds(allBreeds.slice((offset.current), (offset.current + limit.current)));
     };
 
     const onChooseBreed = (option) => {
-        const choosenBreed = allBreeds.find(breed => breed.id === option.value);
+        const choosenBreed = allBreeds.find(breed => breed.id === option);
         if(choosenBreed){
             setViewBreeds([choosenBreed]);
+            setNextDisabled(true);
+            setPrevDisabled(true);
         } else {
-            setViewBreeds(allBreeds.slice(offset, offset + limit));
+            onSetViewImages();
         }
     };
 
     const onChooseLimit = (option) => {
-        setLimit(+option.value);
+        limit.current = +option;
+        onSetViewImages();
     };
 
     const onSort = () => {
+        sort.current = true;
+        reversSort.current = false;
+
         setAllBreeds(allBreeds => allBreeds = allBreeds.slice().reverse());
-        setSortBtnDisabled({sort: true, reversSort: false});
     };
 
     const onReversSort = () => {
+        sort.current = false;
+        reversSort.current = true;
+
         setAllBreeds(allBreeds => allBreeds = allBreeds.slice().reverse());
-        setSortBtnDisabled({sort: false, reversSort: true});
     };
 
     const onPaginationNext = () => {
-        setOffset(offset => offset += limit);
+        offset.current += limit.current;
+
+        onSetViewImages();
     };
 
     const onPaginationPrev = () => {
-        setOffset(offset => (offset  - limit) < 0? 0 : offset -= limit);
+        offset.current - limit.current < 0 ? offset.current = 0 : offset.current -= limit.current;
+
+        onSetViewImages();
     };
 
     useEffect(() => {
@@ -72,27 +89,19 @@ const BreedsPage = () => {
     }, []);
 
     useEffect(() => {
-        setViewBreeds(allBreeds.slice(offset, offset + limit));
+        setViewBreeds(allBreeds.slice(offset.current, offset.current + limit.current));
 
-        if(breedsOptions.length === 1) {
-            breedsOptionsHandler();
-        }
+        const options = allBreeds.map(breed => {
+            return{
+                value: breed.id,
+                label: breed.name,
+        };
+        });
+        setBreedsOptions([breedsOptions[0], ...options]);
 
-        setPaginationDisabled(() => ({
-            prev: !offset ? true: false,
-            next: viewBreeds?.length < limit ? true : false,
-        }));
+        setNextDisabled(false);
 
     }, [allBreeds]);
-
-    useEffect(() => {
-        setViewBreeds(() => allBreeds.slice(offset, offset + limit));
-
-        setPaginationDisabled(() => ({
-            prev: !offset,
-            next: viewBreeds?.length < limit,
-        }));
-    }, [limit, offset]);
 
     const loader = loading ? <Spinner/> : null;
     const content = !loading && viewBreeds ? <GridImageSection viewImages={viewBreeds}/> : null;
@@ -108,12 +117,12 @@ const BreedsPage = () => {
                 <LimitFilter
                     onChooseLimit={onChooseLimit}/>
                 <button className="sort"
-                        disabled={sortBtnDisabled.sort}
+                        disabled={sort.current}
                         onClick={onSort}>
                     <i className="icon_sort"></i>
                 </button>
                 <button className="sort_revers"
-                        disabled={sortBtnDisabled.reversSort}
+                        disabled={reversSort.current}
                         onClick={onReversSort}>
                     <i className="icon_sort_revers"></i>
                 </button>
@@ -121,7 +130,8 @@ const BreedsPage = () => {
             {loader}
             {content}
             <Pagination 
-                paginationDisabled={paginationDisabled}
+                prevDisabled={prevDisabled}
+                nextDisabled={nextDisabled}
                 onPaginationNext={onPaginationNext}
                 onPaginationPrev={onPaginationPrev}/>
         </AppWrapper>

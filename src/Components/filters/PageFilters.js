@@ -24,9 +24,7 @@ const LimitFilter = (props) => {
                     placeholder="Limit"
                     unstyled
                     openMenuOnFocus
-                    onChange={option => {
-                        onChooseLimit(option.value);
-                    }}
+                    onChange={option => onChooseLimit(option.value)}
                     // menuIsOpen
                     defaultValue={limitOptions[0]}
                     options={limitOptions}
