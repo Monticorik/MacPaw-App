@@ -56,7 +56,7 @@ GridImageSection.propTypes = {
 const ViewBreedImage = ({breed}) => {
     const {id, name, src} = breed;
     return (
-        <Link to={`/breed/${id}`} state={breed}>
+        <Link to={`/breed/${id}`}>
             <figure>
                 <img src={src} alt={name}/>
                 <figcaption className="breed">{name}</figcaption>

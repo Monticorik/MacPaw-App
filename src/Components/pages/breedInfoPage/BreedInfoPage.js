@@ -1,6 +1,6 @@
 //Slider made with using "react-slick".
 //Documentation for this API - https://react-slick.neostack.com/docs/api;
-import { useParams, useLocation } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import useCatServices from "../../../services/CatServices";
 
@@ -17,11 +17,23 @@ import "slick-carousel/slick/slick-theme.css";
 
 const BreedInfoPage = () => {
     const {breedId} = useParams();
-    const {name, description, temperament, origin, weight, lifeSpan} = useLocation().state;
-    const {getAllImages, loading} = useCatServices();
+    const {getAllBreeds, getAllImages, loading} = useCatServices();
+
     const [images, setImages] = useState(null);
+    const [breedInfo, setBreedInfo] = useState({name: '', 
+                                                description: '', 
+                                                temperament: '', 
+                                                origin: '', 
+                                                weight: '', 
+                                                lifeSpan: ''});
 
     useEffect(() => {
+        getAllBreeds()
+        .then(res => {
+            const breed = res.find(breed => breed.id === breedId);
+            setBreedInfo({...breed});
+        });
+
         getAllImages({breedId})
         .then(res => {
             setImages(res);
@@ -58,6 +70,7 @@ const BreedInfoPage = () => {
         );
     };
 
+    const {name, description, temperament, origin, weight, lifeSpan} = breedInfo;
     const loader = loading ? <Spinner/> : null;
     const content = !loading && images ? setSlider() : null;
 

@@ -20,16 +20,16 @@ const GaleryPage = () => {
     const [breedsOptions, setBreedsOptions] = useState([{ value: '', label: 'All breeds', }]);
     const allImages = useRef([]);
 
-    //pagination
-    const [prevDisabled, setPrevDisabled] = useState(true);
-    const [nextDisabled, setNextDisabled] = useState(true);
-    const page = useRef(0);
-
     //filters
     const order = useRef('RANDOM');
     const type = useRef('jpg,png');
     const breedId = useRef('');
     const limit = useRef(5);
+
+    //pagination
+    const [prevDisabled, setPrevDisabled] = useState(true);
+    const [nextDisabled, setNextDisabled] = useState(true);
+    const page = useRef(0);
 
     const onRequest = () => {
         getAllImages({limit: limit.current,
