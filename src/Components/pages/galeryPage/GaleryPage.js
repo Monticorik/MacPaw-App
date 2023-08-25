@@ -12,7 +12,7 @@ import Spinner from "../../spinner/Spinner";
 import "./galeryPage.scss";
 
 const GaleryPage = () => {
-    const {getAllBreeds, getAllImages, loading} = useCatServices();
+    const {getAllBreeds, getAllImages, setFavourite, loading} = useCatServices();
 
     //option and images
     const [allBreeds, setAllBreeds] = useState([]);
@@ -107,6 +107,10 @@ const GaleryPage = () => {
         page.current = 0;
     };
 
+    const onAddToFavourite = (id) => {
+        setFavourite({imageId: id});
+    };
+
     const onPaginationNext = () => {
         page.current++;
         setPrevDisabled(false);
@@ -152,7 +156,9 @@ const GaleryPage = () => {
 
 
     const loader = loading ? <Spinner/> : null;
-    const content = !loading && viewImages ? <GridImageSection viewImages={viewImages}/> : null;
+    const content = !loading && viewImages ? <GridImageSection 
+                                                    viewImages={viewImages} 
+                                                    onFigcaptionClick={onAddToFavourite}/> : null;
 
     return(
         <AppWrapper>

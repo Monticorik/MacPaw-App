@@ -37,7 +37,7 @@
                 object-fit: cover;
         }
 
-            figcaption.breed{
+            figcaption.bottom{
             position: absolute;
             left: 10px;
             right: 10px;
@@ -49,13 +49,13 @@
             height: fit-content;
             padding: 4px;
             background: var(--white);
-            font-size: var(--font-md);
+                font-size: var(--font-lg);
             font-weight: 400;
             text-align: center;
             color: var(--red);
         }
 
-            figcaption.galery{
+            figcaption.center{
                 position: absolute;
                 top: 50%;
                 left: 50%;
@@ -67,8 +67,15 @@
                 width: 2.2vw;
                 height: 2.2vw;
                 background: white;
+                font-size: var(--font-lg);
                 color: var(--red);
-                font-size: var(--i-md);
+            }
+
+            figcaption{
+                &:active{
+                    background: var(--red);
+                    color: var(--white);
+                }
             }
 
             &::before{

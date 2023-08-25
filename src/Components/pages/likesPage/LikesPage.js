@@ -1,22 +1,65 @@
-//check style after routing;
+import { useState, useEffect } from "react";
+import useCatServices from "../../../services/CatServices";
+import useUnloadableImage from "../../../hooks/unloadableImageHook";
 
 import AppWrapper from "../../appWrapper/AppWrapper";
-import Label from "../../label/Label";
 import { BackButton } from "../../buttons/Buttons";
+import Label from "../../label/Label";
+import { LimitFilter } from "../../filters/PageFilters";
 import GridImageSection from "../../gridImageSection/GridImageSection";
 import Pagination from "../../pagination/Pagination";
+import Spinner from "../../spinner/Spinner";
 
 import "./likesPage.scss";
 
 const LikesPage = () => {
+    const {getVotings, deleteVote,loading} = useCatServices();
+    const [likeImages, setLikeImages] = useState([]);
+    const {viewImages, prevDisabled, nextDisabled,
+           setImages,
+           onChooseLimit, onPaginationNext, onPaginationPrev} = useUnloadableImage([]);
+
+    const onDeleteFromLike = (voteId) => {
+        deleteVote(voteId)
+        .then(getVotings)
+        .then(res => {
+            const likeImages = res.filter(image => image.value === 'like');
+            setLikeImages(likeImages);
+        });
+    };
+
+    useEffect(() => {
+        getVotings({})
+        .then(res => {
+            const likeImages = res.filter(image => image.value === 'like');
+            setLikeImages(likeImages);
+        });
+    }, []);
+
+    useEffect(() => {
+        setImages(likeImages);
+    }, [likeImages]);
+
+    const loader = loading ? <Spinner/> : null;
+    const content = !loading && likeImages ? <GridImageSection 
+                                                viewImages={viewImages} 
+                                                onFigcaptionClick={onDeleteFromLike}/> : null;
+    
     return(
         <AppWrapper withoutTabIndex="likes">
             <aside className="filters_section like_page">
                 <BackButton/>
                 <Label/>
+                <LimitFilter
+                    onChooseLimit={onChooseLimit}/>
             </aside>
-            <GridImageSection/>
-            <Pagination/>
+            {loader}
+            {content}
+            <Pagination
+                prevDisabled={prevDisabled}
+                nextDisabled={nextDisabled}
+                onPaginationNext={onPaginationNext}
+                onPaginationPrev={onPaginationPrev}/>
         </AppWrapper>
     );
 };

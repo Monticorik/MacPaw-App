@@ -61,6 +61,18 @@ const useCatServices = () => {
         return res;
     };
 
+    const deleteVote = async (voteId) => {
+        const res = await request(`${_apiBase}votes/${voteId}?${_apiKey}`, 'DELETE');
+
+        return res;
+    };
+
+    const deleteFavourite = async (favouriteId) => {
+        const res = await request(`${_apiBase}favourites/${favouriteId}?${_apiKey}`, 'DELETE');
+
+        return res;
+    };
+
     const _transformBreeds = (breed) => {
         return {
             id: breed.id,
@@ -107,7 +119,8 @@ const useCatServices = () => {
     return {loading, 
             getAllBreeds, getSingleBreed, getAllImages, getSingleImage, 
             getVotings, getFavouritings, 
-            setVote, setFavourite};
+            setVote, setFavourite,
+            deleteVote, deleteFavourite};
 };
 
 export default useCatServices;

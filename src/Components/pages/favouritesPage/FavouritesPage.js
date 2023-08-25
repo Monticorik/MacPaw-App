@@ -1,20 +1,63 @@
+import { useState, useEffect } from "react";
+import useCatServices from "../../../services/CatServices";
+import useUnloadableImage from "../../../hooks/unloadableImageHook";
+
 import AppWrapper from "../../appWrapper/AppWrapper";
-import Label from "../../label/Label";
 import { BackButton } from "../../buttons/Buttons";
+import Label from "../../label/Label";
+import { LimitFilter } from "../../filters/PageFilters";
 import GridImageSection from "../../gridImageSection/GridImageSection";
 import Pagination from "../../pagination/Pagination";
+import Spinner from "../../spinner/Spinner";
 
 import "./favouritesPage.scss";
 
 const FavouritesPage = () => {
+    const {getFavouritings, deleteFavourite, loading} = useCatServices();
+    const [favouriteImages, setFavouriteImages] = useState([]);
+    const {viewImages, prevDisabled, nextDisabled,
+           setImages,
+           onChooseLimit, onPaginationNext, onPaginationPrev} = useUnloadableImage([]);
+
+    const onDeleteFromFavourite = (favouriteId) => {
+        deleteFavourite(favouriteId)
+        .then( getFavouritings )
+        .then(res => {
+            setFavouriteImages(res);
+        });
+    };
+
+    useEffect(() => {
+        getFavouritings({})
+        .then(res => {
+            setFavouriteImages(res);
+        });
+    }, []);
+
+    useEffect(() => {
+        setImages(favouriteImages);
+    }, [favouriteImages]);
+
+    const loader = loading ? <Spinner/> : null;
+    const content = !loading && favouriteImages ? <GridImageSection 
+                                                    viewImages={viewImages} 
+                                                    onFigcaptionClick={onDeleteFromFavourite}/> : null;
+
     return(
         <AppWrapper withoutTabIndex="favourites">
             <aside className="filters_section favourite_page">
                 <BackButton/>
                 <Label/>
+                <LimitFilter
+                    onChooseLimit={onChooseLimit}/>
             </aside>
-            <GridImageSection/>
-            <Pagination/>
+            {loader}
+            {content}
+            <Pagination
+                prevDisabled={prevDisabled}
+                nextDisabled={nextDisabled}
+                onPaginationNext={onPaginationNext}
+                onPaginationPrev={onPaginationPrev}/>
         </AppWrapper>
     );
 };

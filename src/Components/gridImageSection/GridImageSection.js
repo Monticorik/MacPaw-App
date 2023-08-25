@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import "./gridImageSection.scss";
 
 const GridImageSection = (props) => {
-    const {viewImages} = props;
+    const {viewImages, onFigcaptionClick} = props;
     const pageName = useLocation().pathname.slice(1);
 
     const setImagesBlock = () => {
@@ -31,7 +31,7 @@ const GridImageSection = (props) => {
                                         key={image.id}>
                                         {pageName === 'breed' ? <ViewBreedImage breed={image}/> :
                                          pageName === 'galery' ? <ViewGaleryImage image={image}/> :
-                                         pageName === 'likes' ? <ViewLikeImage image={image}/> : null}
+                                         <ViewVotingImage image={image}/>}
                                     </div>
                                 );
                         });
@@ -44,6 +44,57 @@ const GridImageSection = (props) => {
         );
     };
 
+    const ViewBreedImage = ({breed}) => {
+        const {id, name, src} = breed;
+        return (
+            <Link to={`/breed/${id}`}>
+                <figure>
+                    <img src={src} alt={name}/>
+                        <figcaption className="bottom">{name}</figcaption>
+                </figure>
+            </Link>
+        );
+    };
+
+    ViewBreedImage.propTypes = {
+        breed: PropTypes.object
+    };
+
+    const ViewGaleryImage = ({image}) => {
+            const {src, id} = image;
+        return (
+            <figure>
+                <img src={src} alt='cat'/>
+                    <figcaption className="center"
+                                onClick={() => onFigcaptionClick(id)}>
+                    <i className="icon_favourite_full"></i>
+                </figcaption>
+            </figure>
+        );
+    };
+
+
+    ViewGaleryImage.propTypes = {
+        image: PropTypes.object
+    };
+
+    const ViewVotingImage = ({image}) => {
+            const {src, id, value} = image;
+        return (
+            <figure>
+                <img src={src} alt='cat'/>
+                    <figcaption className="center"
+                                onClick={() => onFigcaptionClick(id)}>
+                        <i className={`icon_${value}`}></i>
+                </figcaption>
+            </figure>
+        );
+    };
+
+    ViewVotingImage.propTypes = {
+        image: PropTypes.object
+    };
+
     return(
         <section>
             {setImagesBlock()}
@@ -52,56 +103,8 @@ const GridImageSection = (props) => {
 };
 
 GridImageSection.propTypes = {
-    viewImages: PropTypes.arrayOf(PropTypes.object)
-};
-
-const ViewBreedImage = ({breed}) => {
-    const {id, name, src} = breed;
-    return (
-        <Link to={`/breed/${id}`}>
-            <figure>
-                <img src={src} alt={name}/>
-                <figcaption className="breed">{name}</figcaption>
-            </figure>
-        </Link>
-    );
-};
-
-ViewBreedImage.propTypes = {
-    breed: PropTypes.object
-};
-
-const ViewGaleryImage = ({image}) => {
-    const {src} = image;
-    return (
-        <figure>
-            <img src={src} alt='cat'/>
-            <figcaption className="galery">
-                <i className="icon_favourite_full"></i>
-            </figcaption>
-        </figure>
-    );
-};
-
-
-ViewGaleryImage.propTypes = {
-    image: PropTypes.object
-};
-
-const ViewLikeImage = ({image}) => {
-    const {src} = image;
-    return (
-        <figure>
-            <img src={src} alt='cat'/>
-            <figcaption className="galery">
-                <i className="icon_like"></i>
-            </figcaption>
-        </figure>
-    );
-};
-
-ViewLikeImage.propTypes = {
-    image: PropTypes.object
+viewImages: PropTypes.arrayOf(PropTypes.object),
+onFigcaptionClick: PropTypes.func
 };
 
 export default GridImageSection;
