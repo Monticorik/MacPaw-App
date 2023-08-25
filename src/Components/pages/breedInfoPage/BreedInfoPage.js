@@ -1,31 +1,41 @@
 //Slider made with using "react-slick".
 //Documentation for this API - https://react-slick.neostack.com/docs/api;
+import { useParams, useLocation } from "react-router-dom";
+import { useState, useEffect } from "react";
+import useCatServices from "../../../services/CatServices";
 
 import AppWrapper from "../../appWrapper/AppWrapper";
 import Label from "../../label/Label";
 import { BackButton } from "../../buttons/Buttons";
 import Slider from "react-slick";
+import Spinner from "../../spinner/Spinner";
 
-import cat from "../../../resources/img/news_file_3846_5ea8a69e48534.jpg";
 import "./breedInfoPage.scss";
 import "slick-carousel/slick/slick.css"; 
 import "slick-carousel/slick/slick-theme.css";
 
 
 const BreedInfoPage = () => {
+    const {breedId} = useParams();
+    const {name, description, temperament, origin, weight, lifeSpan} = useLocation().state;
+    const {getAllImages, loading} = useCatServices();
+    const [images, setImages] = useState(null);
 
-    const imgList = [
-        {src:cat, alt: "cat"},
-        {src:cat, alt: "cat"},
-        {src:cat, alt: "cat"},
-        {src:cat, alt: "cat"},
-        {src:cat, alt: "cat"},
-    ];
+    const limit = 15;
+
+    useEffect(() => {
+        getAllImages(limit, undefined, undefined, undefined, breedId)
+        .then(res => {
+            setImages(res);
+        });
+    }, []);
 
     const setSlider = () => {
-        const slides = imgList.map((img, index) => {
+        const slides = images.map((image) => {
             return(
-                <img src={img.src} alt={img.alt} key={index}/>
+                <img src={image.src} 
+                     key={image.id}
+                     alt='cat'/>
             );
         });
 
@@ -50,41 +60,46 @@ const BreedInfoPage = () => {
         );
     };
 
+    const loader = loading ? <Spinner/> : null;
+    const content = !loading && images ? setSlider() : null;
+
     return(
         <AppWrapper>
             <aside className="filters_section breed_info_page">
                 <BackButton/>
-                <Label color="pink"/>
-                <Label text="breeds id"/>
+                <Label color="pink"
+                       label="breed"/>
+                <Label label={breedId}/>
             </aside>
             <section>
                 <div className="breed_images_slider">
-                    {setSlider()}
+                    {loader}
+                    {content}
                 </div>
             </section>
             <section className="breed_info">
                 <div className="breed_name">
-                    <h1>Abyssinian</h1>
+                    <h1>{name}</h1>
                 </div>
                 <div className="breed_description">
-                    <span>The Abyssinian is easy to care for, and a joy to have in your home. They’re affectionate cats and love both people and other animals.</span>
+                    <span>{description}</span>
                 </div>
                 <div className="breed_temperament">
                     <span><strong>Temperament:</strong></span>
-                    <span>Active, Energetic, Independent, Intelligent, Gentle</span>
+                    <span>{temperament}</span>
                 </div>
                 <div className="breed_other_info">
                     <div className="origin">
                         <span><strong>Origin:</strong></span>
-                        <span>Egypt</span>
+                        <span>{origin}</span>
                     </div>
                     <div className="weight">
                         <span><strong>Weight:</strong></span>
-                        <span>3 - 5 kgs</span>
+                        <span>{weight}</span>
                     </div>
                     <div className="life_span">
                         <span><strong>Life span:</strong></span>
-                        <span>14 - 15 years</span>
+                        <span>{lifeSpan}</span>
                     </div>
                 </div>
             </section>

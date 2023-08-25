@@ -76,7 +76,7 @@ const ViewBreedFigcaption = ({breed}) => {
     const {id, name, src} = breed;
     console.log(breed, id, name, src);
     return (
-        <Link to={`/breed/${id}`} breed={breed}>
+        <Link to={`/breed/${id}`} state={breed}>
             <figure>
                 <img src={src} alt={name}/>
                 <figcaption>{name}</figcaption>

@@ -103,16 +103,16 @@
     padding-bottom: 0.5vw;
 
     .breed_name{
-        flex-basis: 100%;
         margin-top: -1.2em; 
-        padding: 0 35%;
     
         h1{
+            padding-inline: 20px;
             background-color: var(--white); 
             font-weight: 500;
             font-size: var(--font-lg);
             color: var(--black);
             text-align: center;
+            white-space: nowrap;
         }
     }
 
@@ -129,6 +129,7 @@
         flex-basis: 50%;
         display: flex;
         flex-wrap: wrap;
+        height: fit-content;
         padding: 0 40px;
 
         span{
