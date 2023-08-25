@@ -1,5 +1,7 @@
 import useHttp from "../hooks/http.hook";
 
+import noFoto from '../resources/img/no-foto.svg';
+
 const useCatServices = () => {
     const {loading, error, request, clearError} = useHttp();
     const _apiBase = 'https://api.thecatapi.com/v1/';
@@ -7,8 +9,13 @@ const useCatServices = () => {
     const _subId = 'The-greatest-user-ever';
 
     const getAllBreeds = async () => {
-        const res = await request(`${_apiBase}breeds`);
+        const res = await request(`${_apiBase}breeds?attach_image=1&${_apiKey}`);
         return res.map(_transformBreeds);
+    };
+
+    const getSingleBreed = async (id) => {
+        const res = await request(`${_apiBase}images/search?limit=25&breed_id=${id}&attach_image=1&${_apiKey}`);
+        return res.map(_transformSingleBreed);
     };
 
     const getAllImages = async ({limit = 1, page = 0, order = 'RANDOM', type ='jpg,png', breedId = ''}) => {
@@ -17,6 +24,11 @@ const useCatServices = () => {
         }
 
         const res = await request(`${_apiBase}images/search?limit=${limit}&page=${page}&order=${order}&mime_types=${type}&breed_ids=${breedId}&${_apiKey}`);
+        return res.map(_transformImages);
+    };
+
+    const getSingleImage = async () => {
+        const res = await request(`${_apiBase}images/search?&${_apiKey}`);
         return res.map(_transformImages);
     };
 
@@ -53,12 +65,25 @@ const useCatServices = () => {
         return {
             id: breed.id,
             name: breed.name,
-            src: `https://cdn2.thecatapi.com/images/${breed.reference_image_id}.jpg`,
+            src: breed.image ? breed.image.url : noFoto,
             description: breed.description,
             temperament: breed.temperament,
             origin: breed.origin ,
             weight: breed.weight.metric + ' kgs',
             lifeSpan: breed.life_span + ' years',
+        };
+    };
+
+    const _transformSingleBreed = (breed) => {
+        return {
+            id: breed.id,
+            name: breed.breeds[0].name,
+            src: breed.url,
+            description: breed.breeds[0].description,
+            temperament: breed.breeds[0].temperament,
+            origin: breed.breeds[0].origin ,
+            weight: breed.breeds[0].weight.metric + ' kgs',
+            lifeSpan: breed.breeds[0].life_span + ' years',
         };
     };
 
@@ -75,11 +100,14 @@ const useCatServices = () => {
             createdTime: vote.created_at.replace(/[T]|(:\d+\.\d+\w+)/gi, ' '),
             value: vote.value === 1 ? 'like' : vote.value === 0 ? 'dislike' : 'favourite',
             imageId: vote.image.id,
-            imageSrc: vote.image.url,
+            src: vote.image.url,
         };
     };
 
-    return {loading, getAllBreeds, getAllImages, getVotings, getFavouritings, setVote, setFavourite};
+    return {loading, 
+            getAllBreeds, getSingleBreed, getAllImages, getSingleImage, 
+            getVotings, getFavouritings, 
+            setVote, setFavourite};
 };
 
 export default useCatServices;

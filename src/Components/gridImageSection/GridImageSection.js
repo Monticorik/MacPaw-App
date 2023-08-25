@@ -14,7 +14,7 @@ const GridImageSection = (props) => {
         //each chunk is handled by function that return a component
         for(let i = 0; i < viewImages.length; i += 5) {
             const arr = viewImages.slice(i, i + 5);
-            images.push(imageListHandler(arr));
+            images.push(imageListHandler(arr, i));
         }
 
         return(
@@ -24,19 +24,21 @@ const GridImageSection = (props) => {
         );
     };
 
-    const imageListHandler = (imageList) => {
+    const imageListHandler = (imageList, index) => {
         const images = imageList.map(image => {
                                 return(
                                     <div className="grid_img"
                                         key={image.id}>
                                         {pageName === 'breed' ? <ViewBreedImage breed={image}/> :
-                                         pageName === 'galery' ? <ViewGaleryImage image={image}/> : null}
+                                         pageName === 'galery' ? <ViewGaleryImage image={image}/> :
+                                         pageName === 'likes' ? <ViewLikeImage image={image}/> : null}
                                     </div>
                                 );
                         });
 
         return(
-            <div className="images_block">
+            <div className="images_block"
+                 key={index}>
                 {images}
             </div>
         );
@@ -81,7 +83,24 @@ const ViewGaleryImage = ({image}) => {
     );
 };
 
+
 ViewGaleryImage.propTypes = {
+    image: PropTypes.object
+};
+
+const ViewLikeImage = ({image}) => {
+    const {src} = image;
+    return (
+        <figure>
+            <img src={src} alt='cat'/>
+            <figcaption className="galery">
+                <i className="icon_like"></i>
+            </figcaption>
+        </figure>
+    );
+};
+
+ViewLikeImage.propTypes = {
     image: PropTypes.object
 };
 
