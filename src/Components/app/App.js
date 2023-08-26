@@ -6,6 +6,7 @@ import {AppBanner,
         DislikesPage, 
         FavouritesPage, 
         GaleryPage, 
+        Page404,
         LikesPage, 
         SearchPage, 
         VotingPage} from "../pages";
@@ -31,7 +32,7 @@ function App() {
                 <Route path="/favourites" element={<FavouritesPage/>} />
                 <Route path="/dislikes" element={<DislikesPage/>} />
                 <Route path="/search/:searchValue" element={<SearchPage/>} />
-                {/* <Route path="*" element={<Page404/>} /> */}
+                <Route path="*" element={<Page404/>} />
             </Routes>
           </main>
         </div>
