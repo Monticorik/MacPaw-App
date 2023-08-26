@@ -1,7 +1,7 @@
 const Cat404 = () => {
     return(
         <>
-            <svg viewBox="251.268 207.689 544.727 538.64" xmlns="http://www.w3.org/2000/svg" style={{"display": "flex", "width": "50%", "margin": "auto", "margin-top": "3vw"}}>
+            <svg viewBox="251.268 207.689 544.727 538.64" xmlns="http://www.w3.org/2000/svg" className="cat_404">
             <path style={{"stroke": "rgb(0, 0, 0)", "fill": "rgb(229, 173, 69)", "strokeLinejoin": "round"}} d="M 317.552 486.563 L 632.044 483.81 L 696.465 533.915 L 367.202 535.016 L 317.552 486.563 Z">
                 <title>box-inside</title>
             </path>

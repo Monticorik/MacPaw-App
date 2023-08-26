@@ -18,14 +18,6 @@ const BackButton = () => {
     );
 };
 
-const MenuButton = () => {
-    return(
-        <button className="call_menu_button">
-            <i className="icon_menu"></i>
-        </button>
-    );
-};
-
 const CloseButton = ({close}) => {
     return(
         <button className="close_button"
@@ -53,7 +45,7 @@ UpdateButton.propTypes = {
     updateFunction: PropTypes.func
 };
 
-export {BackButton, MenuButton, CloseButton, UpdateButton};
+export {BackButton, CloseButton, UpdateButton};
 
 
 

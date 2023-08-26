@@ -17,11 +17,7 @@ function App() {
   return (
     <div className="App">
       <Router>
-        <div className='left_side'>
             <AppHeader/>
-        </div>
-        <div className='right_side'>
-          <main>
             <Routes>
                 <Route path="/" element={<AppBanner/>} />
                 <Route path="/voting" element={<VotingPage/>} />
@@ -34,8 +30,6 @@ function App() {
                 <Route path="/search/:searchValue" element={<SearchPage/>} />
                 <Route path="*" element={<Page404/>} />
             </Routes>
-          </main>
-        </div>
       </Router>
     </div>
   );

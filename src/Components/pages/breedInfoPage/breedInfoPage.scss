@@ -1,25 +1,7 @@
 @import "../../../style/variables.css";
 
-.filters_section.breed_info_page{
-    display: grid;
-    grid-template: 100% / repeat(12, 1fr);
-    gap: 0.5vw;
-    height: 3vw;
-    max-height: 40px;
-    min-height: 25px;
-    margin-bottom: 0.6vw;
-
-    .back_button{
-        grid-column: 1 / 2;
-    }
-
-    .label{
-        grid-column: 2 / 5;
-    }
-
-    .label:last-child{
+.filters_section.breed_info_page .label:last-child{
         grid-column: 5 / 7;
-    }
 }
 
 .breed_images_slider{
@@ -29,8 +11,8 @@
     img{
         height: 30vw;
         max-height: 400px;
-        min-height: 300px;
-        object-fit: contain;
+        min-height: 270px;
+        object-fit: cover;
         border-radius: 20px;
         width: auto !important;
         max-width: 100%;
@@ -100,7 +82,7 @@
     flex-wrap: wrap;
     border: 0.2vw solid var(--pink);
     border-radius: 1vw;
-    margin-top: 1.5vw;
+    margin-top: 35px;
     padding-bottom: 0.5vw;
 
     .breed_name{
@@ -121,7 +103,7 @@
         flex-basis: 100%;
         padding: 20px;
         font-weight: 500;
-        font-size: var(--font-md);
+        font-size: calc(var(--font-sm) + 3px);
         color: var(--gray);
         text-align: center;
     }
@@ -171,6 +153,100 @@
             }
         }
     }
+}
 
+@media (max-width: 1500px){
 
+}
+
+@media (max-width: 1200px){
+
+}
+
+@media (max-width: 992px){
+    #custom_dots{
+        ul{
+            gap: 5px;
+            padding: 5px 3px;
+
+            li{
+                width: 15px;
+                height: 15px;
+            }
+        }
+    }
+
+    .breed_info{
+        .breed_description{
+            padding: 10px;
+        }
+
+        .breed_temperament,
+        .breed_other_info{
+            padding: 0 20px;
+        }
+    }
+}
+
+@media (max-width: 768px){
+    .breed_info{
+        .breed_description{
+            padding: 20px;
+        }
+
+        .breed_temperament,
+        .breed_other_info{
+            padding: 0 40px;
+        }
+    }
+}
+
+@media (max-width: 576px){
+    .breed_images_slider img{
+        object-fit: contain;
+        border-radius: 0px;
+    }
+
+    #custom_dots{
+        ul{
+            li{
+                width: 10px;
+                height: 10px;
+
+                button{
+                    width: 8px;
+                    height: 8px;
+                }
+            }
+
+            li[class$="-active"]{
+                button{
+                    width: 10px;
+                    height: 10px;
+                }
+            }
+
+        }
+    }
+
+    .breed_info{
+        .breed_description{
+            padding: 10px;
+        }
+
+        .breed_temperament,
+        .breed_other_info{
+            padding: 0 20px;
+        }
+    }
+
+}
+
+@media (max-width: 375px){
+    .breed_info{
+        .breed_temperament,
+        .breed_other_info{
+            flex-basis: 100%;
+        }
+    }
 }

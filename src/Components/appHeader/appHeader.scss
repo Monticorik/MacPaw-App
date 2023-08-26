@@ -1,12 +1,19 @@
 @import '../../style/variables.css';
 
 #logo{
-    margin-top: 5%;
-    width: 5vw;
+    width: 7vw;
     min-width: 80px;
 
-    a:focus{
+    a{
+        width: 100%;
+        
+        &:focus{
         border-bottom: 0.2vw solid var(--pink);
+    }
+}
+
+    img{
+        width: 100%;
     }
 }
 
@@ -25,7 +32,43 @@
     }
 }
 
+@media (max-width: 1500px){
 
+}
+
+@media (max-width: 1200px){
+
+}
+
+@media (max-width: 992px){
+
+}
+
+@media (max-width: 768px){
+    #logo{
+        display: none;
+    }
+
+    #greating_text{
+        display: none;
+    }
+
+    .first_page .close_button{
+        display: none;
+    }
+    
+    .first_page #logo{
+        display: block;
+    }
+
+    .first_page #greating_text{
+        display: block;
+    }
+}
+
+@media (max-width: 576px){
+
+}
 
 
 // X-Small	None	<576px

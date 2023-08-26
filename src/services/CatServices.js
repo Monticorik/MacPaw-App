@@ -123,7 +123,7 @@ const useCatServices = () => {
     const _transformVoting = (vote) => {
         return {
             id: vote.id,
-            createdTime: vote.created_at.replace(/[T]|(:\d+\.\d+\w+)/gi, ' '),
+            createdTime: vote.created_at.match(/(\d+:\d+)/gi)[0],
             value: vote.value === 1 ? 'like' : vote.value === 0 ? 'dislike' : 'favourite',
             imageId: vote.image.id,
             src: vote.image.url,

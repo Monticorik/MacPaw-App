@@ -6,7 +6,9 @@
     align-items: center;
     border: 2px solid var(--background);
     border-radius: 10px;
-    font-size: var(--font-lg);
+    height: 2.5vw;
+    min-height: 35px;
+    font-size: var(--font-md);
     color: var(--gray);
 
     &:hover,
@@ -17,22 +19,6 @@
 }
 
 .filters_section.breed_page{
-    display: grid;
-    grid-template: 100% / repeat(12, 1fr);
-    gap: 0.5vw;
-    height: 3vw;
-    max-height: 40px;
-    min-height: 25px;
-    margin-bottom: 0.6vw;
-
-    .back_button{
-        grid-column: 1 / 2;
-    }
-
-    .label{
-        grid-column: 2 / 5;
-    }
-
     #breeds_filter{
         grid-column: 5 / 9;
     }
@@ -49,5 +35,79 @@
     .sort_revers{
         grid-column: 12 / 13;
         @include sort-buttons-style;
+    }
+}
+
+@media (max-width: 1500px){
+
+}
+
+@media (max-width: 1200px){
+
+}
+
+@media (max-width: 992px){
+
+}
+
+@media (max-width: 768px){
+    .filters_section.breed_page{
+        .sort,
+        .sort_revers{
+            border-radius: 5px;
+        }
+    }
+}
+
+@media (max-width: 576px){
+    .filters_section.breed_page{
+        grid-template-rows: repeat(2, 1fr);
+        height: auto;
+        max-height: unset;
+        
+        #breeds_filter{
+            grid-column: 5 / 9;
+        }
+    
+        #limit_filter{
+            grid-row: 2 / 3;
+            grid-column: 1 / 4;
+        }
+    
+        .sort{
+            grid-row: 2 / 3;
+            grid-column: 5 / 7;
+        }
+    
+        .sort_revers{
+            grid-row: 2 / 3;
+            grid-column: 7 / 9;
+        }
+    }
+}
+
+@media (max-width: 375px){
+    .filters_section.breed_page{
+        grid-template-rows: repeat(3, 1fr);
+        
+        #breeds_filter{
+            grid-row: 2 / 3;
+            grid-column: 1 / 6;
+        }
+    
+        #limit_filter{
+            grid-row: 3 / 4;
+            grid-column: 1 / 4;
+        }
+    
+        .sort{
+            grid-row: 3 / 4;
+            grid-column: 4 / 5;
+        }
+    
+        .sort_revers{
+            grid-row: 3 / 4;
+            grid-column: 5 / 6;
+        }
     }
 }

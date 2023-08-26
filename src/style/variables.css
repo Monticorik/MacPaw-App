@@ -10,13 +10,11 @@
   --black:      #111111; 
 
   /* font-size */
-  --font-lg: 1.7em;
-  --font-md: 1.2em;
-  --font-sm: 1em;
-  --font-xsm: calc(5px + 0.5vw);
-  
-  
-  
+  /* --font-lg: 1.7em; */
+  --font-lg: 35px;
+  --font-md: 25px;
+  --font-sm: 16px;
+  --font-xsm: 10px;
 }
 
 [data-dark-them]{
@@ -27,8 +25,67 @@
   --green:      #97EAB9;
   --white:      #FFFFFF;
   --background: #F8F8F7;
-  --gray:  #8C8C8C;
+  --gray:       #8C8C8C;
   --black:      #111111; 
+}
+
+@media (max-width: 1500px){
+  :root{
+    /* font-size */
+    /* --font-lg: 1.7em; */
+    --font-lg: 2.5vw;
+    --font-md: 1.5vw;
+    --font-sm: 1.1vw;
+    --font-xsm: 0.6vw;
+  }
+}
+
+@media (max-width: 1200px){
+
+}
+
+@media (max-width: 992px){
+  :root{
+    /* font-size */
+    /* --font-lg: 1.7em; */
+    --font-lg: 25px;
+    --font-md: 15px;
+    --font-sm: 12px;
+    --font-xsm: calc(5px + 0.5vw);
+  }
+}
+
+@media (max-width: 768px){
+  :root{
+    /* font-size */
+    /* --font-lg: 1.7em; */
+    /* --font-lg: 25px; */
+    --font-md: 19px;
+    --font-sm: 15px;
+    --font-xsm: calc(5px + 0.5vw);
+  }
+}
+
+@media (max-width: 576px){
+  :root{
+    /* font-size */
+    /* --font-lg: 1.7em; */
+    --font-lg: 20px;
+    --font-md: 15px;
+    --font-sm: 12px;
+    --font-xsm: calc(5px + 0.5vw);
+  }
+}
+
+@media (max-width: 375px){
+  :root{
+    /* font-size */
+    /* --font-lg: 1.7em; */
+    --font-lg: 20px;
+    --font-md: 18px;
+    --font-sm: 16px;
+    --font-xsm: calc(5px + 0.5vw);
+  }
 }
 
 

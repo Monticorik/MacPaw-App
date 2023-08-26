@@ -14,9 +14,11 @@ const UploadImageModal = ({isOpen, closeModal}) => {
     const [isResponseGoted, setResponceGot] = useState(false);
 
     const input = useRef(null);
+    const label = useRef(null);
 
     const uploadImageHandler = (event) => {
         const userImage = event.target.files[0];
+        label.current.style.backgroundColor = '';
         clearError();
         setFormSubmit(false);
         setResponceGot(false);
@@ -26,6 +28,7 @@ const UploadImageModal = ({isOpen, closeModal}) => {
 
     const onClose = () => {
         input.current.value = null;
+        label.current.style.backgroundColor = '';
         setFormSubmit(false);
         setResponceGot(false);
         setImage(null);
@@ -37,10 +40,12 @@ const UploadImageModal = ({isOpen, closeModal}) => {
         setFormSubmit(true);
         uploadImage(image)
             .then(() => {
+                label.current.style.backgroundColor = 'var(--green)';
                 setFormSubmit(false);
                 setResponceGot(true);
             })
             .catch(() => {
+                label.current.style.backgroundColor = 'var(--red)';
                 setFormSubmit(false);
                 setResponceGot(true);
             });
@@ -56,7 +61,8 @@ const UploadImageModal = ({isOpen, closeModal}) => {
                     <h1>Upload a .jpg, .png or .gif Cat Image</h1>
                     <span>Any uploads must comply with the <a href="https://thecatapi.com/privacy">upload guidelines</a> or face deletion.</span>
                 </div>
-                <label>
+                <label
+                    ref={label}>
                     <img src={image ? URL.createObjectURL(image) :
                                             noFoto} 
                         alt='upload cat'/>

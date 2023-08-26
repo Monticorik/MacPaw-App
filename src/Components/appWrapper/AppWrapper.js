@@ -14,11 +14,18 @@ const AppWrapper = (props) => {
         navigate(`/search/${event.target[0].value}`);
     };
 
+    const onMenuClick = () => {
+        document.querySelector('.left_side').style.display = 'block';
+        document.querySelector('.right_side').style.display = 'none';
+    };
+
     return (
-        <>
+        <div className='right_side'>
+            <main>
             <section className='search_block'>
-                <button className="menu">
-                    <i className="icon-menu"></i>
+                    <button className="menu"
+                            onClick={onMenuClick}>
+                        <i className="icon_menu"></i>
                 </button>
                 <div className="search_input">
                     <form onSubmit={onSubmitHandler}>
@@ -48,7 +55,8 @@ const AppWrapper = (props) => {
             <section className='main_block'>
                 {props.children}
             </section>
-        </>
+            </main>
+        </div>
     );
 };
 

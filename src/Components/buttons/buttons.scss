@@ -4,23 +4,19 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    border-radius: 10px;
+    border-radius: 8px;
     padding: 5px;
     cursor: pointer;
 }
 
-@mixin pink-buttons-style{
-    
-
-
-}
-
 .back_button{
     @include buttons-style;
+    height: 2.5vw;
+    min-height: 35px;
     background-color: var(--pink);
     
     i{
-        font-size: var(--font-lg);
+        font-size: var(--font-md);
         color: var(--red);
     }
 
@@ -34,12 +30,18 @@
     }
 }
 
-.call_menu_button{
-    @include buttons-style;
-}
-
 .close_button{
     @include buttons-style;
+
+    width: 6vw;
+    max-width: 40px;
+    min-width: 35px;
+    height: 6vw;
+    max-height: 40px;
+    min-height: 35px;
+    background-color: white;
+    font-size: var(--font-md);
+    color: var(--red);
 }
 
 .update_button{
@@ -47,7 +49,7 @@
     background-color: var(--white);
 
     i{
-        font-size: var(--font-md);
+        font-size: var(--font-sm);
         color: var(--red);
     }
 
@@ -66,5 +68,23 @@
         i{
             color: var(--white);
         }
+    }
+}
+
+@media (max-width: 768px){
+    .back_button{
+        border-radius: 5px;
+    }
+}
+
+@media (max-width: 576px){
+    .back_button{
+        height: 35px;
+    }
+}
+
+@media (max-width: 375px){
+    .back_button{
+        height: 40px;
     }
 }

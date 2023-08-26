@@ -3,6 +3,10 @@
 #main_menu{
     margin-top: 5%;
 
+    .close_button{
+        display: none;
+    }
+
     span{
         font-size: var(--font-sm);
         font-weight: 500;
@@ -12,15 +16,20 @@
         display: flex;
         align-items: center;
         justify-content: space-between;
+        margin-top: 15px;
         width: 70%;
     
         &_option{
             height: 13vw;
             max-height: 250px;
             min-height: 200px;
-        }
+            width: 7vw;
     
-        &_button{
+            a{
+                width: 100%;
+                height: 100%;
+
+                .menu_button{
             height: 100%;
             cursor: pointer;
 
@@ -61,15 +70,14 @@
             }
         }
     
-        &_img{
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            height: 75%;
-            width: 7vw;
-            min-width: 110px;
-            border: 3px solid rgba(255, 255, 255, 0.6);
-            border-radius: 15px;
+                .menu_img{
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    height: 75%;
+                    width: 100%;
+                    border: 3px solid rgba(255, 255, 255, 0.6);
+                    border-radius: 12px;
     
             img{
                 height: -webkit-fill-available;
@@ -77,16 +85,15 @@
             }
         }
     
-        &_text{
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            height: 14%;
-            width: 7vw;
-            min-width: 110px;
-            border-radius: 8px;
-            margin-top: 10px;
-            background-color: var(--white);
+                .menu_text{
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    margin-top: 10px;
+                    height: 14%;
+                    width: 100%;
+                    border-radius: 6px;
+                    background-color: var(--white);
     
             span{
                 font-weight: 400;
@@ -96,6 +103,19 @@
             }
         }
     }
+
+        }
+    
+        
+    }
+}
+
+@media (max-width: 1500px){
+    #main_menu{
+        .menu{
+            width: 80%;
+        }
+    }
 }
 
 @media (max-width: 1200px){
@@ -103,33 +123,95 @@
         .menu{
             width: 85%;
 
-            &_img{
-                min-width: 100px;
-            }
-
-            &_text{
-                min-width: 100px;
+            &_option{
+                width: 100px;
             }
         }
     }
 }
 
 @media (max-width: 992px){
+    #main_menu{
+        .menu{
+            width: 95%;
 
+            &_option{
+                min-height: 150px;
+                width: 80px;
+            }
+        }
+    }
 }
 
 @media (max-width: 768px){
+    #main_menu{
+        margin-top: 0;
+
+        .close_button{
+            display: flex;
+            margin-left: auto;
+        }
+
+        .start_text{
+            display: none;
+        }
+
+        .menu{
+            width: 100%;
+            margin-top: 3vh;
+
+            &_option{
+                min-height: 200px;
+                width: 110px;
+            }
+        }
+    }
+
+    .first_page #main_menu {
+        .close_button{
+            display: none;
+        }
+
+        .start_text{
+            display: block;
+            margin-top: 7vh;
+        }
+    }
+        
 
 }
 
 @media (max-width: 576px){
+    #main_menu{
 
+        .menu{            
+            &_option{
+                min-height: 150px;
+                width: 80px;
+            }
+        }
+    }
 }
 
+@media (max-width: 375px){
+    #main_menu{
+        .menu{
+            flex-wrap: wrap;
 
+            &_option{
+                min-height: 50px;
+                width: 100%;
 
-// X-Small	None	<576px
-// Small	sm	≥576px
-// Medium	md	≥768px
-// Large	lg	≥992px
-// Extra large	xl	≥1200px
+                a{
+                    .menu_img {
+                        display: none;
+                    }
+
+                    .menu_text{
+                        height: 30px;
+                    }
+                }
+            }
+        }
+    }
+}

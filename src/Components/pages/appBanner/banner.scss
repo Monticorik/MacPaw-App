@@ -1,15 +1,58 @@
 @import '../../../style/variables.css';
 
-.banner{
+.right_side.first_page{
+    padding-right: 0;
 
-    margin: 3vh auto;
-    border-radius: 50px;
-    height: 90%;
-    width: 90%;
-    background-color: var(--pink);
+    main{
+        position: unset;
+        padding-top: 0;
+
+.banner{
+            position: relative;
+            width: 50vw;
+            height: min-content;
+            float: right;
+
+            &::before{
+                content: '';
+                position: absolute;
+                z-index: 10;
+                top: 5%;
+                right: 5%;
+                display: block;
+                width: 90%;
+                height: 90%;
+                border-radius: 50px;
+                background-color: var(--pink);
+            }
 
     img{
-        width: 42vw;
-        transform: translate(-7%, -5%);
+                position: relative;
+                z-index: 20;
+                right: 0;
+                width: 50vw;
+            }
+        }
     }
+}
+
+
+@media (max-width: 1500px){
+
+}
+
+@media (max-width: 1200px){
+
+}
+
+@media (max-width: 992px){
+
+}
+
+@media (max-width: 768px){
+
+}
+
+@media (max-width: 576px){
+
 }

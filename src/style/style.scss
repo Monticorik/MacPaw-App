@@ -107,6 +107,7 @@ main{
   width: 50vw;
   height: fit-content;
   padding-left: 10vw;
+  padding-top: 3vh;
 }
 
 .right_side{
@@ -114,22 +115,83 @@ main{
   padding-right: 10vw;
 }
 
+.filters_section{
+    display: grid;
+    grid-template: 100%/repeat(12, 1fr);
+    gap: 0.5vw;
+    height: 3vw;
+    max-height: 40px;
+    min-height: 35px;
+    margin-bottom: 0.6vw;
+}
+
 
 
 @media (max-width: 1200px){
-
+  .left_side{
+    padding-left: 5vw;
+  }
+  
+  .right_side{
+    padding-right: 5vw;
+  }
 }
 
 @media (max-width: 992px){
+  .left_side{
+    width: 40vw;
+  }
 
+  .right_side{
+    width: 60vw;
+  }
 }
 
 @media (max-width: 768px){
+  .left_side{
+    display: none;
+    width: 100vw;
+    padding: 3vh 15vw 0 15vw;    
+  }
 
+  .left_side.first_page{
+    display: block;
+  }
+  
+  .right_side{
+    display: block;
+    width: 100vw;
+    padding: 0 5vw;
+  }
+
+  .right_side.first_page{
+    display: none;
+  }
+
+  .filters_section{
+    gap: 1.5vw;
+    min-height: 35px;
+    margin-bottom: 1.5vw;
+  }
 }
 
 @media (max-width: 576px){
+  .left_side{
+    padding: 3vh 10vw 0 10vw;
+  }
 
+  .filters_section{
+    grid-template: 100% / repeat(8, 1fr);
+    gap: 1.5vw;
+  }
+}
+
+@media (max-width: 375px){
+  .filters_section{
+    grid-template: 100% / repeat(5, 1fr);
+    gap: 10px;
+    margin-bottom: 10px;
+  }
 }
 
 

@@ -1,28 +1,13 @@
 @import "../../../style/variables.css";
 
-.filters_section.like_page{
-    display: grid;
-    grid-template: 100% / repeat(12, 1fr);
-    gap: 0.5vw;
-    height: 3vw;
-    max-height: 40px;
-    min-height: 25px;
-    margin-bottom: 0.6vw;
-
-    .back_button{
-        grid-column: 1 / 2;
-    }
-
-    .label{
-        grid-column: 2 / 5;
-    }
-
+.filters_section.search_page{
     #limit_filter{
-        grid-column: 5 / 7;
+        grid-column: 5 / 8;
     }
 }
 
 .search-title {
+    margin-bottom: 0.6vw;
     font-weight: 400;
     font-size: var(--font-md);
     color: var(--gray);
@@ -34,5 +19,39 @@
     .searchValue{
         font-weight: 500;
         color: var(--black); 
+    }
+}
+
+@media (max-width: 1500px){
+
+}
+
+@media (max-width: 1200px){
+
+}
+
+@media (max-width: 992px){
+
+}
+
+@media (max-width: 768px){
+    .search-title {
+        margin-bottom: 1.5vw;
+    }
+}
+
+@media (max-width: 576px){
+
+}
+
+@media (max-width: 375px){
+    .filters_section.search_page{
+        #limit_filter{
+            grid-column: 4 / 6;
+        }
+    }
+
+    .search-title {
+        margin-bottom: 10px;
     }
 }
