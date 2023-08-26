@@ -9,7 +9,7 @@ import Label from "../../label/Label";
 import { BackButton } from "../../buttons/Buttons";
 import Slider from "react-slick";
 import Spinner from "../../spinner/Spinner";
-import ErrorMessage from "../../Error/ErrorMessage";
+import ErrorMessage from "../../error/ErrorMessage";
 
 import "./breedInfoPage.scss";
 import "slick-carousel/slick/slick.css"; 

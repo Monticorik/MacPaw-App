@@ -10,7 +10,7 @@ import { LimitFilter } from "../../filters/PageFilters";
 import GridImageSection from "../../gridImageSection/GridImageSection";
 import Pagination from "../../pagination/Pagination";
 import Spinner from "../../spinner/Spinner";
-import ErrorMessage from "../../Error/ErrorMessage";
+import ErrorMessage from "../../error/ErrorMessage";
 
 import "./searchPage.scss";
 

@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router-dom";
+import PropTypes from 'prop-types';
 
 import "./buttons.scss";
 
@@ -25,20 +26,31 @@ const MenuButton = () => {
     );
 };
 
-const CloseButton = () => {
+const CloseButton = ({close}) => {
     return(
-        <button className="close_button">
+        <button className="close_button"
+            onClick={close}>
             <i className="icon_close"></i>
         </button>
     );
 };
 
-const UpdateButton = () => {
+CloseButton.propTypes = {
+    close: PropTypes.func
+};
+
+const UpdateButton = (props) => {
+    const {updateFunction} = props;
     return(
-        <button className="update_button">
+        <button className="update_button"
+            onClick={updateFunction}>
             <i className="icon_update"></i>
         </button>
     );
+};
+
+UpdateButton.propTypes = {
+    updateFunction: PropTypes.func
 };
 
 export {BackButton, MenuButton, CloseButton, UpdateButton};

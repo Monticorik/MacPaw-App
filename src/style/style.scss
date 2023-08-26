@@ -78,11 +78,27 @@ body{
 }
 
 main{
+  position: relative;
   padding-top: 3vh;
 }
 
 .App{
   display: flex;
+}
+
+.modal-is-open{
+  overflow: hidden;
+}
+
+.modal-is-open::after{
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 10;
 }
 
 .left_side{

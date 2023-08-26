@@ -5,7 +5,7 @@ import AppWrapper from "../../appWrapper/AppWrapper";
 import Label from "../../label/Label";
 import { BackButton, UpdateButton } from "../../buttons/Buttons";
 import Spinner from "../../spinner/Spinner";
-import ErrorMessage from "../../Error/ErrorMessage";
+import ErrorMessage from "../../error/ErrorMessage";
 
 import "./votingPage.scss";
 

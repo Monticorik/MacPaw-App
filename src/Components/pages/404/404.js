@@ -20,7 +20,7 @@ const Page404 = () => {
             </div>
             <Cat404/>
         </AppWrapper>
-    )
-}
+    );
+};
 
 export default Page404;

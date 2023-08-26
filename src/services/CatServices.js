@@ -78,6 +78,15 @@ const useCatServices = () => {
         return res;
     };
 
+    const uploadImage = async (image) => {
+        const formData = new FormData();
+              formData.append('file', image);
+              formData.append('sub_id', _subId);
+        const res = await request(`${_apiBase}images/upload`, 'POST', {'x-api-key' : _apiKey.replace(/api_key=/gm, '')}, formData);
+
+        return res;
+    };
+
     const _transformBreeds = (breed) => {
         return {
             id: breed.id,
@@ -125,7 +134,8 @@ const useCatServices = () => {
             getAllBreeds, getSingleBreed, getSearchBreeds, getAllImages, getSingleImage, 
             getVotings, getFavouritings, 
             setVote, setFavourite,
-            deleteVote, deleteFavourite};
+            deleteVote, deleteFavourite,
+            uploadImage};
 };
 
 export default useCatServices;

@@ -8,7 +8,8 @@ import {LimitFilter, BreedsFilter, OrderFilter, TypeFilter} from '../../filters/
 import GridImageSection from "../../gridImageSection/GridImageSection";
 import Pagination from "../../pagination/Pagination";
 import Spinner from "../../spinner/Spinner";
-import ErrorMessage from "../../Error/ErrorMessage";
+import ErrorMessage from "../../error/ErrorMessage";
+import UploadImageModal from "../../modal/UploadImageModal";
 
 import "./galeryPage.scss";
 
@@ -31,6 +32,9 @@ const GaleryPage = () => {
     const [prevDisabled, setPrevDisabled] = useState(true);
     const [nextDisabled, setNextDisabled] = useState(true);
     const page = useRef(0);
+
+    //upload image modal
+    const [isOpen, setIsOpen] = useState(false);
 
     const onRequest = () => {
         getAllImages({limit: limit.current,
@@ -135,6 +139,22 @@ const GaleryPage = () => {
         onChangeViewImages();
     };
 
+    const update = () => {
+        allImages.current = [];
+        page.current = 0;
+        onRequest(); 
+    };
+
+    const toggleUploadImageModal = () => {
+        document.querySelector('body').classList.toggle('modal-is-open');
+        setIsOpen(!isOpen);
+    };
+
+    // const closeUploadImageModal = () => {
+    //     document.querySelector('body').classList.toggle('modal-is-open');
+    //     setIsOpen(!isOpen);
+    // }
+
     useEffect(() => {
         getAllBreeds()
         .then(res => {
@@ -166,7 +186,8 @@ const GaleryPage = () => {
             <aside className="filters_section galery_page">
                 <BackButton/>
                 <Label text="Galery"/>
-                <button className="upload_image">
+                <button className="upload_image"
+                    onClick={toggleUploadImageModal}>
                     <i className="icon_upload"></i>
                     <span>upload</span> 
                 </button>
@@ -185,7 +206,8 @@ const GaleryPage = () => {
                         label
                         onChooseLimit={onChangeLimit}/>
                     <div className="update_block">
-                        <UpdateButton/>
+                        <UpdateButton 
+                            updateFunction={update}/>
                     </div>
                 </div>
             </aside>
@@ -198,6 +220,11 @@ const GaleryPage = () => {
                 onPaginationNext={onPaginationNext}
                 onPaginationPrev={onPaginationPrev}
                 />
+            <UploadImageModal
+                isOpen={isOpen}
+                closeModal={toggleUploadImageModal}>
+            </UploadImageModal>
+            
         </AppWrapper>
     );
 };

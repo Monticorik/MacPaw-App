@@ -116,7 +116,7 @@ const Cat404 = () => {
             </g>
             </svg>
         </>
-    )
-}
+    );
+};
 
-export default Cat404
+export default Cat404;
