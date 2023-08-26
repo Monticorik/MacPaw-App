@@ -5,39 +5,32 @@ import AppWrapper from "../../appWrapper/AppWrapper";
 import Label from "../../label/Label";
 import { BackButton, UpdateButton } from "../../buttons/Buttons";
 import Spinner from "../../spinner/Spinner";
+import ErrorMessage from "../../Error/ErrorMessage";
 
 import "./votingPage.scss";
 
 const VotingPage = () => {
-    const {getAllImages, getVotings, getFavouritings, setVote, setFavourite} = useCatServices();
+    const {getSingleImage, getVotings, getFavouritings, setVote, setFavourite, loading, error} = useCatServices();
     const [image, setImage] = useState({});
     const [votes, setVotes] = useState([]);
     const [favourites, setFavourites] = useState([]);
     const [voteLog, setVoteLog] = useState([]);
     const [btnDisabled, setBtnDisabled] = useState(true);
-    const [imageLoading, setImageLoading] = useState(true);
-    const [logLoading, setLogLoading] = useState(true);
-
-    const page = 0;
-    const limit = 1;
 
     const addToLike = () => {
         setBtnDisabled(true);
-        setLogLoading(true);
         setVote({vote: 1, imageId: image.id})
         .then(onLoadVotes);
     };
 
     const addToFavourite = () => {
         setBtnDisabled(true);
-        setLogLoading(true);
         setFavourite({imageId: image.id})
         .then(onLoadVotes);
     };
 
     const addToDislike = () => {
         setBtnDisabled(true);
-        setLogLoading(true);
         setVote({vote: 0, imageId: image.id})
         .then(onLoadVotes);
     };
@@ -51,10 +44,9 @@ const VotingPage = () => {
     };
 
     useEffect(() => {
-        getAllImages({page, limit})
+        getSingleImage()
         .then(res => {
             setImage(...res);
-            setImageLoading(false);
         });
 
         onLoadVotes();
@@ -76,15 +68,12 @@ const VotingPage = () => {
                  );
         }));
 
-        setLogLoading(false);
-
         setBtnDisabled(false);
     }, [votes, favourites]);
 
-    const imageSpiner = imageLoading ? <Spinner/> : null;
-    const logSpiner = logLoading ? <Spinner/> : null;
-    const loadedImage = !imageLoading && image ? <img src={image.src} alt="cat" /> : null;
-    const log =  !logLoading && voteLog ? voteLog : null;
+    const errorMessage = error ? <ErrorMessage/> : null;
+    const loader = loading ? <Spinner/> : null;
+    const content = !loading && !error && image ? <img src={image.src} alt="cat" /> : null;
     
     return(
         <AppWrapper>
@@ -95,8 +84,9 @@ const VotingPage = () => {
             </aside>
             <section className="img_block">
                 <div className="image">
-                    {imageSpiner}
-                    {loadedImage}
+                    {loader}
+                    {errorMessage}
+                    {content}
                 </div>
                 <div className="voting_button_block">
                     <button className="add_to_like"
@@ -117,8 +107,7 @@ const VotingPage = () => {
                 </div>
             </section>
             <section className="log_block">
-                {logSpiner}
-                {log}
+                {voteLog}
             </section>
         </AppWrapper>
     );

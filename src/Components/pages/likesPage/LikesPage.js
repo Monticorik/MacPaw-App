@@ -9,11 +9,12 @@ import { LimitFilter } from "../../filters/PageFilters";
 import GridImageSection from "../../gridImageSection/GridImageSection";
 import Pagination from "../../pagination/Pagination";
 import Spinner from "../../spinner/Spinner";
+import ErrorMessage from "../../Error/ErrorMessage";
 
 import "./likesPage.scss";
 
 const LikesPage = () => {
-    const {getVotings, deleteVote,loading} = useCatServices();
+    const {getVotings, deleteVote,loading, error} = useCatServices();
     const [likeImages, setLikeImages] = useState([]);
     const {viewImages, prevDisabled, nextDisabled,
            setImages,
@@ -40,8 +41,9 @@ const LikesPage = () => {
         setImages(likeImages);
     }, [likeImages]);
 
+    const errorMessage = error ? <ErrorMessage/> : null;
     const loader = loading ? <Spinner/> : null;
-    const content = !loading && likeImages ? <GridImageSection 
+    const content = !loading && !error && likeImages ? <GridImageSection 
                                                 viewImages={viewImages} 
                                                 onFigcaptionClick={onDeleteFromLike}/> : null;
     
@@ -54,6 +56,7 @@ const LikesPage = () => {
                     onChooseLimit={onChooseLimit}/>
             </aside>
             {loader}
+            {errorMessage}
             {content}
             <Pagination
                 prevDisabled={prevDisabled}

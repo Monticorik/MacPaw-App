@@ -121,7 +121,7 @@ const useCatServices = () => {
         };
     };
 
-    return {loading, 
+    return {loading, error, clearError,
             getAllBreeds, getSingleBreed, getSearchBreeds, getAllImages, getSingleImage, 
             getVotings, getFavouritings, 
             setVote, setFavourite,

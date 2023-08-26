@@ -10,7 +10,6 @@ const AppWrapper = (props) => {
 
     const onSubmitHandler = (event) => {
         event.preventDefault();
-        console.log(event.target[0].value);
 
         navigate(`/search/${event.target[0].value}`);
     };

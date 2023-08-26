@@ -9,11 +9,12 @@ import { LimitFilter } from "../../filters/PageFilters";
 import GridImageSection from "../../gridImageSection/GridImageSection";
 import Pagination from "../../pagination/Pagination";
 import Spinner from "../../spinner/Spinner";
+import ErrorMessage from "../../Error/ErrorMessage";
 
 import "./favouritesPage.scss";
 
 const FavouritesPage = () => {
-    const {getFavouritings, deleteFavourite, loading} = useCatServices();
+    const {getFavouritings, deleteFavourite, loading, error} = useCatServices();
     const [favouriteImages, setFavouriteImages] = useState([]);
     const {viewImages, prevDisabled, nextDisabled,
            setImages,
@@ -38,8 +39,9 @@ const FavouritesPage = () => {
         setImages(favouriteImages);
     }, [favouriteImages]);
 
+    const errorMessage = error ? <ErrorMessage/> : null;
     const loader = loading ? <Spinner/> : null;
-    const content = !loading && favouriteImages ? <GridImageSection 
+    const content = !loading && !error && favouriteImages ? <GridImageSection 
                                                     viewImages={viewImages} 
                                                     onFigcaptionClick={onDeleteFromFavourite}/> : null;
 
@@ -52,6 +54,7 @@ const FavouritesPage = () => {
                     onChooseLimit={onChooseLimit}/>
             </aside>
             {loader}
+            {errorMessage}
             {content}
             <Pagination
                 prevDisabled={prevDisabled}

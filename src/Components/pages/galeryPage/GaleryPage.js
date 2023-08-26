@@ -8,11 +8,12 @@ import {LimitFilter, BreedsFilter, OrderFilter, TypeFilter} from '../../filters/
 import GridImageSection from "../../gridImageSection/GridImageSection";
 import Pagination from "../../pagination/Pagination";
 import Spinner from "../../spinner/Spinner";
+import ErrorMessage from "../../Error/ErrorMessage";
 
 import "./galeryPage.scss";
 
 const GaleryPage = () => {
-    const {getAllBreeds, getAllImages, setFavourite, loading} = useCatServices();
+    const {getAllBreeds, getAllImages, setFavourite, loading, error} = useCatServices();
 
     //option and images
     const [allBreeds, setAllBreeds] = useState([]);
@@ -154,9 +155,9 @@ const GaleryPage = () => {
         setBreedsOptions([breedsOptions[0], ...options]);
     }, [allBreeds]);
 
-
+    const errorMessage = error ? <ErrorMessage/> : null;
     const loader = loading ? <Spinner/> : null;
-    const content = !loading && viewImages ? <GridImageSection 
+    const content = !loading && !error && viewImages ? <GridImageSection 
                                                     viewImages={viewImages} 
                                                     onFigcaptionClick={onAddToFavourite}/> : null;
 
@@ -189,6 +190,7 @@ const GaleryPage = () => {
                 </div>
             </aside>
             {loader}
+            {errorMessage}
             {content}
             <Pagination
                 prevDisabled={prevDisabled}

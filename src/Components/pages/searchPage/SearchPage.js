@@ -10,12 +10,13 @@ import { LimitFilter } from "../../filters/PageFilters";
 import GridImageSection from "../../gridImageSection/GridImageSection";
 import Pagination from "../../pagination/Pagination";
 import Spinner from "../../spinner/Spinner";
+import ErrorMessage from "../../Error/ErrorMessage";
 
 import "./searchPage.scss";
 
 const SearchPage = () => {
     const { searchValue } = useParams();
-    const { getSearchBreeds, loading } = useCatServices();
+    const { getSearchBreeds, loading, error } = useCatServices();
     const [searchBreeds, setSearchBreeds] = useState([]);
     const {viewImages, prevDisabled, nextDisabled,
            setImages,
@@ -32,12 +33,13 @@ const SearchPage = () => {
         setImages(searchBreeds);
     }, [searchBreeds]);
 
+    const errorMessage = error ? <ErrorMessage/> : null;
     const loader = loading ? <Spinner/> : null;
-    const noResults = !loading && searchBreeds.length === 0 ?   <div className="search-title">
+    const noResults = !loading && !error && searchBreeds.length === 0 ?   <div className="search-title">
                                                                     <span>No results found for: </span>
                                                                     <span className="searchValue">{searchValue}</span>  
                                                                 </div> : null;
-    const content = !loading && searchBreeds.length > 0 ? <GridImageSection 
+    const content = !loading && !error && searchBreeds.length > 0 ? <GridImageSection 
                                                                 viewImages={viewImages}/> : null;
 
     return(
@@ -53,6 +55,7 @@ const SearchPage = () => {
                     <span className="searchValue">{searchValue}</span>  
             </div>
             {loader}
+            {errorMessage}
             {noResults}
             {content}
             <Pagination

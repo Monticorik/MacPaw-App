@@ -25,7 +25,6 @@ const LimitFilter = (props) => {
                     unstyled
                     openMenuOnFocus
                     onChange={option => onChooseLimit(option.value)}
-                    // menuIsOpen
                     defaultValue={limitOptions[0]}
                     options={limitOptions}
             />     
@@ -51,7 +50,6 @@ const BreedsFilter = (props) => {
                     openMenuOnFocus
                     menuShouldScrollIntoView
                     onChange={(option) => onChooseBreed(option.value)}
-                    // menuIsOpen
                     defaultValue={breedsOptions[0]}
                     options={breedsOptions}
             />     
@@ -83,7 +81,6 @@ const OrderFilter = (props) => {
                     unstyled
                     openMenuOnFocus
                     onChange={(option) => onChooseOrder(option.value)}
-                    // menuIsOpen
                     defaultValue={orderOptions[0]}
                     options={orderOptions}
             />     
@@ -114,7 +111,6 @@ const TypeFilter = (props) => {
                     unstyled
                     openMenuOnFocus
                     onChange={(option) => onChooseType(option.value)}
-                    // menuIsOpen
                     defaultValue={typeOptions[0]}
                     options={typeOptions}
             />     

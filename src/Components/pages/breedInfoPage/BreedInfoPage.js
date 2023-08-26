@@ -9,6 +9,7 @@ import Label from "../../label/Label";
 import { BackButton } from "../../buttons/Buttons";
 import Slider from "react-slick";
 import Spinner from "../../spinner/Spinner";
+import ErrorMessage from "../../Error/ErrorMessage";
 
 import "./breedInfoPage.scss";
 import "slick-carousel/slick/slick.css"; 
@@ -17,7 +18,7 @@ import "slick-carousel/slick/slick-theme.css";
 
 const BreedInfoPage = () => {
     const {breedId} = useParams();
-    const {getAllBreeds, getAllImages, loading} = useCatServices();
+    const {getSingleBreed, loading, error} = useCatServices();
 
     const [images, setImages] = useState(null);
     const [breedInfo, setBreedInfo] = useState({name: '', 
@@ -28,14 +29,9 @@ const BreedInfoPage = () => {
                                                 lifeSpan: ''});
 
     useEffect(() => {
-        getAllBreeds()
+        getSingleBreed(breedId)
         .then(res => {
-            const breed = res.find(breed => breed.id === breedId);
-            setBreedInfo({...breed});
-        });
-
-        getAllImages({breedId})
-        .then(res => {
+            setBreedInfo({...res[0]});
             setImages(res);
         });
     }, []);
@@ -71,6 +67,7 @@ const BreedInfoPage = () => {
     };
 
     const {name, description, temperament, origin, weight, lifeSpan} = breedInfo;
+    const errorMessage = error ? <ErrorMessage/> : null;
     const loader = loading ? <Spinner/> : null;
     const content = !loading && images ? setSlider() : null;
 
@@ -85,6 +82,7 @@ const BreedInfoPage = () => {
             <section>
                 <div className="breed_images_slider">
                     {loader}
+                    {errorMessage}
                     {content}
                 </div>
             </section>

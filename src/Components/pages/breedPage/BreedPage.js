@@ -9,12 +9,13 @@ import {LimitFilter, BreedsFilter} from '../../filters/PageFilters';
 import GridImageSection from "../../gridImageSection/GridImageSection";
 import Pagination from "../../pagination/Pagination";
 import Spinner from "../../spinner/Spinner";
+import ErrorMessage from "../../Error/ErrorMessage";
 
 import './breedPage.scss';
 
 
 const BreedsPage = () => {
-    const {loading, getAllBreeds} = useCatServices();
+    const {getAllBreeds, loading, error} = useCatServices();
     const [allBreeds, setAllBreeds] = useState([]);
     const {viewImages, breedsOptions, sort, reversSort, prevDisabled, nextDisabled,
            setImages,
@@ -31,8 +32,9 @@ const BreedsPage = () => {
         setImages(allBreeds);
     }, [allBreeds]);
 
+    const errorMessage = error ? <ErrorMessage/> : null;
     const loader = loading ? <Spinner/> : null;
-    const content = !loading && allBreeds ? <GridImageSection viewImages={viewImages}/> : null;
+    const content = !loading && !error && allBreeds ? <GridImageSection viewImages={viewImages}/> : null;
 
     return(
         <AppWrapper>
@@ -56,6 +58,7 @@ const BreedsPage = () => {
                 </button>
             </aside>
             {loader}
+            {errorMessage}
             {content}
             <Pagination 
                 prevDisabled={prevDisabled}

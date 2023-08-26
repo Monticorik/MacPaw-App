@@ -9,7 +9,6 @@ const useHttp = () => {
 
         try{
             const responce = await fetch(url, {method, headers, body});
-            console.log('hook');
 
             if(!responce.ok){
                 throw new Error(`Could not fetch ${url}, status: ${responce.status}`);
