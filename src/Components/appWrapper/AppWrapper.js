@@ -1,4 +1,4 @@
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 import './appWrapper.scss';
@@ -6,6 +6,15 @@ import './appWrapper.scss';
 
 const AppWrapper = (props) => {
     const {withoutTabIndex} = props;
+    const navigate = useNavigate();
+
+    const onSubmitHandler = (event) => {
+        event.preventDefault();
+        console.log(event.target[0].value);
+
+        navigate(`/search/${event.target[0].value}`);
+    };
+
     return (
         <>
             <section className='search_block'>
@@ -13,7 +22,7 @@ const AppWrapper = (props) => {
                     <i className="icon-menu"></i>
                 </button>
                 <div className="search_input">
-                    <form>
+                    <form onSubmit={onSubmitHandler}>
                         <input type="text" placeholder="Search for breeds by name"/>
                         <button className="search_button"
                                     type="submit">

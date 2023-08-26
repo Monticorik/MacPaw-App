@@ -24,7 +24,8 @@ const useUnloadableImage = (imageArr) => {
     };
 
     const onCutImagesArray = () => {
-        setViewImages(images.slice(offset.current, offset.current + limit.current));
+        setNextDisabled(false);
+        onSetViewImages();
 
         if(images[0]?.name){
             const options = images.map(breed => {
@@ -35,8 +36,6 @@ const useUnloadableImage = (imageArr) => {
             });
             setBreedsOptions([breedsOptions[0], ...options]);
         }
-
-        setNextDisabled(false);
     };
 
     const onChooseBreed = (option) => {

@@ -1,0 +1,36 @@
+.filters_section.like_page{
+    display: grid;
+    grid-template: 100% / repeat(12, 1fr);
+    gap: 0.5vw;
+    height: 3vw;
+    max-height: 40px;
+    min-height: 25px;
+    margin-bottom: 0.6vw;
+
+    .back_button{
+        grid-column: 1 / 2;
+    }
+
+    .label{
+        grid-column: 2 / 5;
+    }
+
+    #limit_filter{
+        grid-column: 5 / 7;
+    }
+}
+
+.search-title {
+    font-weight: 400;
+    font-size: var(--font-md);
+    color: var(--gray);
+
+    &:nth-last-child(2){
+        margin-bottom: 5vw;  
+    }
+
+    .searchValue{
+        font-weight: 500;
+        color: var(--black); 
+    }
+}

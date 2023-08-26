@@ -5,6 +5,8 @@ import DislikesPage from "./dislikesPage/DislikesPage";
 import FavouritesPage from "./favouritesPage/FavouritesPage";
 import GaleryPage from "./galeryPage/GaleryPage";
 import LikesPage from "./likesPage/LikesPage";
+import SearchPage from "./searchPage/SearchPage";
 import VotingPage from "./votingPage/VotingPage";
 
-export {AppBanner, BreedInfoPage, BreedPage, DislikesPage, FavouritesPage, GaleryPage, LikesPage, VotingPage};
+
+export {AppBanner, BreedInfoPage, BreedPage, DislikesPage, FavouritesPage, GaleryPage, LikesPage, SearchPage, VotingPage};

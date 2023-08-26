@@ -7,6 +7,7 @@ import {AppBanner,
         FavouritesPage, 
         GaleryPage, 
         LikesPage, 
+        SearchPage, 
         VotingPage} from "../pages";
 
 import '../../style/style.scss';
@@ -29,6 +30,7 @@ function App() {
                 <Route path="/likes" element={<LikesPage/>} />
                 <Route path="/favourites" element={<FavouritesPage/>} />
                 <Route path="/dislikes" element={<DislikesPage/>} />
+                <Route path="/search/:searchValue" element={<SearchPage/>} />
                 {/* <Route path="*" element={<Page404/>} /> */}
             </Routes>
           </main>

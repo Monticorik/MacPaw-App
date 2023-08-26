@@ -18,6 +18,11 @@ const useCatServices = () => {
         return res.map(_transformSingleBreed);
     };
 
+    const getSearchBreeds = async (searchValue) => {
+        const res = await request(`${_apiBase}breeds/search?q=${searchValue}&${_apiKey}`);
+        return res.map(_transformBreeds);
+    };
+
     const getAllImages = async ({limit = 1, page = 0, order = 'RANDOM', type ='jpg,png', breedId = ''}) => {
         if(breedId){
             order = 'ASC';
@@ -117,7 +122,7 @@ const useCatServices = () => {
     };
 
     return {loading, 
-            getAllBreeds, getSingleBreed, getAllImages, getSingleImage, 
+            getAllBreeds, getSingleBreed, getSearchBreeds, getAllImages, getSingleImage, 
             getVotings, getFavouritings, 
             setVote, setFavourite,
             deleteVote, deleteFavourite};

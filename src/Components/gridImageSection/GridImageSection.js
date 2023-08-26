@@ -29,7 +29,7 @@ const GridImageSection = (props) => {
                                 return(
                                     <div className="grid_img"
                                         key={image.id}>
-                                        {pageName === 'breed' ? <ViewBreedImage breed={image}/> :
+                                        {pageName === 'breed' || /search/.test(pageName) ? <ViewBreedImage breed={image}/> :
                                          pageName === 'galery' ? <ViewGaleryImage image={image}/> :
                                          <ViewVotingImage image={image}/>}
                                     </div>
