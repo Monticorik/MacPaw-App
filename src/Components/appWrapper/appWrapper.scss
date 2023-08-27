@@ -5,13 +5,13 @@
     height: 3.5vw;
     max-height: 60px;
     min-height: 40px;
-    background-color: var(--white);
+    background-color: var(--white-alt);
     cursor: pointer;
 
     @media (max-width: 768px){
         height: 7vw;
     }
-  }
+}
 
 @mixin button-for-rate-page {
     @include search-block-elements;
@@ -35,7 +35,7 @@
 
     &:active{
         background-color: var(--red);
-        color: var(--white);
+        color: white;
     }
 
     @media (max-width: 768px){
@@ -62,11 +62,12 @@
             position: relative;
 
             input{
-                border: 2px solid var(--white);
+                border: 2px solid var(--white-alt);
                 border-radius: 1vw;
                 width: 100%;
                 height: 100%;
                 padding: 2px 1vw;
+                background-color: var(--white);
                 font-size: var(--font-sm);
                 color: var(--gray);
 
@@ -127,7 +128,7 @@
 
         &.active{
             background-color: var(--red);
-            color: var(--white);
+            color: white;
 
             &:hover{
                 background-color: var(--red);
@@ -135,22 +136,45 @@
 
             &:focus{
                 background-color: var(--red);
-                color: var(--white);
+                color: white;
             }
 
             &:active{
                 background-color: var(--red);
-                color: var(--white);
+                color: white;
             }
         }
     }
 
 }
 
+[data-dark-them="true"] .search_block{
+    .search_input{
+        form {
+            input{
+                background-color: #191919;
+                border-color: #191919;
+
+                &:hover{
+                    border-color: var(--pink);
+                }
+
+                &:focus{
+                    border-color: var(--red);
+                }
+
+                &:active{
+                    border-color: var(--red);
+                }
+            }
+        }
+    }
+}
+
 .main_block{
     width: 100%;
     height: fit-content;
-    background-color: white;
+    background-color: var(--white-alt);
     border-radius: 1vw;
     margin: 10px 0 1vw 0;
     padding: 0.6vw;
@@ -169,7 +193,10 @@
             border-radius: 5px;
         }
 
-        .menu,
+        .menu{
+            font-size: var(--font-sm);
+        }
+        
         .likes,
         .favourites,
         .dislikes{

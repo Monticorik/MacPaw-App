@@ -1,11 +1,11 @@
 @font-face {
-  font-family: 'icon-font';
-  src: url('./icon-font.eot?94494745');
-  src: url('./icon-font.eot?94494745#iefix') format('embedded-opentype'),
-       url('./icon-font.woff2?94494745') format('woff2'),
-       url('./icon-font.woff?94494745') format('woff'),
-       url('./icon-font.ttf?94494745') format('truetype'),
-       url('./icon-font.svg?94494745#icon-font') format('svg');
+  font-family: 'fontello';
+  src: url('./icon-font.eot?93817353');
+  src: url('./icon-font.eot?93817353#iefix') format('embedded-opentype'),
+       url('./icon-font.woff2?93817353') format('woff2'),
+       url('./icon-font.woff?93817353') format('woff'),
+       url('./icon-font.ttf?93817353') format('truetype'),
+       url('./icon-font.svg?93817353#fontello') format('svg');
   font-weight: normal;
   font-style: normal;
 }
@@ -14,23 +14,21 @@
 /*
 @media screen and (-webkit-min-device-pixel-ratio:0) {
   @font-face {
-    font-family: 'icon-font';
-    src: url('../font/icon-font.svg?94494745#icon-font') format('svg');
+    font-family: 'fontello';
+    src: url('./icon-font.svg?93817353#fontello') format('svg');
   }
 }
 */
 [class^="icon_"]:before, [class*=" icon_"]:before {
-  font-family: "icon-font";
+  font-family: "fontello";
   font-style: normal;
   font-weight: normal;
   speak: never;
 
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  display: inline-block;
   text-decoration: inherit;
-  width: 1em;
-  /* margin-right: .2em; */
+  /* width: 1em; */
+  margin-right: .2em;
   text-align: center;
   /* opacity: .8; */
 
@@ -43,7 +41,7 @@
 
   /* Animation center compensation - margins should be symmetric */
   /* remove if not needed */
-  /* margin-left: .2em; */
+  margin-left: .2em;
 
   /* you can be more comfortable with increased icons size */
   /* font-size: 120%; */
@@ -70,5 +68,6 @@
 .icon_favourite:before { content: '\e80b'; } /* '' */
 .icon_arrow_left:before { content: '\e80c'; } /* '' */
 .icon_fail:before { content: '\e80d'; } /* '' */
-.icon_arrow_down:before { content: '\e80e'; } /* '' */
-.icon_menu:before { content: '\f008'; } /* '' */
+.icon_menu:before { content: '\e80e'; } /* '' */
+.icon_closed_eye:before { content: '\e80f'; } /* '' */
+.icon_eye:before { content: '\f800'; } /* '' */

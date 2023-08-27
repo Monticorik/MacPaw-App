@@ -5,9 +5,9 @@ const Banner = () => {
     return (
         <div className='right_side first_page'>
             <main>
-        <div className="banner">
-            <img src={banner} alt="banner girl and pet"/>
-        </div>
+                <div className="banner">
+                    <img src={banner} alt="banner girl and pet"/>
+                </div>
             </main>
         </div>
     );

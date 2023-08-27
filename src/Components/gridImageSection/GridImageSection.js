@@ -50,7 +50,7 @@ const GridImageSection = (props) => {
             <Link to={`/breed/${id}`}>
                 <figure>
                     <img src={src} alt={name}/>
-                        <figcaption className="bottom">{name}</figcaption>
+                    <figcaption className="bottom">{name}</figcaption>
                 </figure>
             </Link>
         );
@@ -61,13 +61,13 @@ const GridImageSection = (props) => {
     };
 
     const ViewGaleryImage = ({image}) => {
-            const {src, id} = image;
+        const {src, id} = image;
         return (
             <figure>
                 <img src={src} alt='cat'/>
-                    <figcaption className="center"
-                                onClick={() => onFigcaptionClick(id)}>
-                    <i className="icon_favourite_full"></i>
+                <figcaption className="center"
+                            onClick={() => onFigcaptionClick(id)}>
+                    <i className="icon_favourite"></i>
                 </figcaption>
             </figure>
         );
@@ -79,13 +79,13 @@ const GridImageSection = (props) => {
     };
 
     const ViewVotingImage = ({image}) => {
-            const {src, id, value} = image;
+        const {src, id, value} = image;
         return (
             <figure>
                 <img src={src} alt='cat'/>
-                    <figcaption className="center"
-                                onClick={() => onFigcaptionClick(id)}>
-                        <i className={`icon_${value}`}></i>
+                <figcaption className="center"
+                            onClick={() => onFigcaptionClick(id)}>
+                    <i className={`icon_${value}`}></i>
                 </figcaption>
             </figure>
         );

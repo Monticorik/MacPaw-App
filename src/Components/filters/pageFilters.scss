@@ -17,7 +17,7 @@
         border-radius: 10px;
         padding: 0 0.5vw;
         height: 2.5vw;
-        max-height: 38px;
+        max-height: 40px;
         min-height: 35px !important;
         background-color: var(--background);
         cursor: pointer !important;
@@ -104,7 +104,7 @@
 label{
     padding-left: 0.6vw;
     font-weight: 500;
-    font-size: 0.5vw;
+    font-size: var(--font-xsm);
     color: var(--gray);
     text-transform: uppercase;
 }

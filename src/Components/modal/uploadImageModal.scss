@@ -55,8 +55,13 @@
             width: 100%;
             height: 17vw;
             min-height: 180px;
-            background-color: var(--white);
+            background-color: var(--white-alt);
             text-align: center;
+
+            svg{
+                position: absolute;
+                width: 95%;
+            }
 
             img{
                 position: absolute;
@@ -102,10 +107,11 @@
             border-radius: 0.8vw;
             padding: 0.5vw 1.5vw;
             width: max-content;
+            min-height: 35px;
             margin: 0 auto;
             font-size: var(--font-sm);
             font-weight: 400;
-            color: var(--white);
+            color: white;
             text-transform: uppercase;
             letter-spacing: 0.1vw;
             white-space: nowrap;
@@ -116,8 +122,9 @@
             align-items: center;
             border-radius: 0.8vw;
             width: 100%;
+            min-height: 45px;
             padding: 0.7vw 1.5vw;
-            background-color: white;
+            background-color: var(--white-alt);
             font-weight: 400;
             font-size: var(--sm);
             color: var(--gray);
@@ -142,6 +149,10 @@
     }
 }
 
+[data-dark-them='true'] .upload_image.modal{
+    background-color: #191919;
+}
+
 .loader_wrapper{
     display: flex;
     justify-content: center;
@@ -152,7 +163,7 @@
     .loader{
         width: 1em;
         height: 1em;
-        border-top: 2px solid var(--pink);
+        border-top: 2px solid var(--pink-alt);
         border-radius: 50%;
         animation: spin 2s infinite linear;
     }
@@ -180,11 +191,25 @@
 }
 
 @media (max-width: 768px){
-
+    .upload_image.modal{
+        .upload_image_form{
+            label{
+                min-height: 270px;
+            }
+        }
+    }
 }
 
 @media (max-width: 576px){
-
+    .upload_image.modal{
+        .upload_image_form{
+            label{
+                img{
+                    width: 95%;
+                }
+            }
+        }
+    }
 }
 
 

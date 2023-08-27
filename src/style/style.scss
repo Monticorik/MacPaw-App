@@ -14,7 +14,7 @@
   }
 
   &::-webkit-scrollbar {
-    background-color: transparent;
+    background-color: var(--background);
     width: 10px;
   }
 
@@ -64,7 +64,7 @@ p {
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
   -webkit-appearance: none;
-  margin: 0; 
+  margin: 0;
 }
 
 button{
@@ -117,7 +117,7 @@ main{
 
 .filters_section{
     display: grid;
-    grid-template: 100%/repeat(12, 1fr);
+    grid-template-columns: repeat(12, 1fr);
     gap: 0.5vw;
     height: 3vw;
     max-height: 40px;
@@ -181,14 +181,14 @@ main{
   }
 
   .filters_section{
-    grid-template: 100% / repeat(8, 1fr);
+    grid-template-columns: repeat(8, 1fr);
     gap: 1.5vw;
   }
 }
 
 @media (max-width: 375px){
   .filters_section{
-    grid-template: 100% / repeat(5, 1fr);
+    grid-template-columns: repeat(5, 1fr);
     gap: 10px;
     margin-bottom: 10px;
   }

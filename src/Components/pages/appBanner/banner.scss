@@ -1,5 +1,16 @@
 @import '../../../style/variables.css';
 
+[data-dark-them] .right_side.first_page{
+    main{
+        .banner{
+            &::before{
+                background-color: var(--white-alt);
+            }
+        }
+    }
+}
+
+
 .right_side.first_page{
     padding-right: 0;
 
@@ -7,7 +18,7 @@
         position: unset;
         padding-top: 0;
 
-.banner{
+        .banner{
             position: relative;
             width: 50vw;
             height: min-content;
@@ -25,8 +36,8 @@
                 border-radius: 50px;
                 background-color: var(--pink);
             }
-
-    img{
+        
+            img{
                 position: relative;
                 z-index: 20;
                 right: 0;

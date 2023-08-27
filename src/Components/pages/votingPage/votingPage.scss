@@ -60,17 +60,13 @@
             align-items: center;
             width: 100%;
             font-size: var(--font-lg);
-            color: var(--white);
+            color: white;
         }
 
         .add_to_like{
             background-color: var(--green);
 
-            &:hover{
-                background-color: rgba(151, 234, 185, 0.3);
-                color: var(--green);
-            }
-
+            &:hover,
             &:focus{
                 background-color: rgba(151, 234, 185, 0.3);
                 color: var(--green);
@@ -78,7 +74,7 @@
 
             &:active{
                 background-color: var(--green);
-                color: var(--white);
+                color: white;
             }
         }
 
@@ -97,7 +93,7 @@
 
             &:active{
                 background-color: var(--red);
-                color: var(--white);
+                color: white;
             }
         }
 
@@ -116,7 +112,7 @@
 
             &:active{
                 background-color: var(--orange);
-                color: var(--white);
+                color: white;
             }
         }
     }
@@ -137,13 +133,13 @@
         min-height: 45px;
         max-height: 60px;
         padding: 0.5vw 1vw;
-        background-color: var(--background);
+        background-color: var(--background-alt);
 
         .time{
             flex-basis: 15%;
             border-radius: 0.5vw;
             padding: 0.3vw 0;
-            background-color: white;
+            background-color: var(--white);
             font-size: var(--font-sm);
             font-weight: 400;
             text-align: center;
@@ -181,7 +177,11 @@
 
     &::-webkit-scrollbar-thumb {
         border-color: var(--white);
-      }
+    }
+}
+
+[data-dark-them="true"] .log_block::-webkit-scrollbar-thumb {
+    border-color: #191919;
 }
 
 @media (max-width: 1500px){

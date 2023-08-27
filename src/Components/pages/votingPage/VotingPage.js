@@ -43,6 +43,13 @@ const VotingPage = () => {
         .then(res => setFavourites(res));
     };
 
+    const update = () => {
+        getSingleImage()
+        .then(res => {
+            setImage(...res);
+        });
+    };
+
     useEffect(() => {
         getSingleImage()
         .then(res => {
@@ -80,7 +87,8 @@ const VotingPage = () => {
             <aside className="filters_section voting_page">
                 <BackButton/>
                 <Label text="Voting"/>
-                <UpdateButton/>
+                <UpdateButton
+                    updateFunction={update}/>
             </aside>
             <section className="img_block">
                 <div className="image">

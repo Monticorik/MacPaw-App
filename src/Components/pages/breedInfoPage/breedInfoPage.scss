@@ -30,6 +30,7 @@
 #custom_dots{
     width: fit-content;
     left: 50%;
+    bottom: -27px;
     transform: translate(-50%, -50%);
     background-color: var(--white);
     border-radius: 1vw;
@@ -155,6 +156,11 @@
     }
 }
 
+[data-dark-them='true'] #custom_dots,
+[data-dark-them='true'] .breed_info .breed_name h1{
+    background-color: #191919;
+}
+
 @media (max-width: 1500px){
 
 }
@@ -165,8 +171,10 @@
 
 @media (max-width: 992px){
     #custom_dots{
+        bottom: -20px;
+
         ul{
-            gap: 5px;
+            gap: 7px;
             padding: 5px 3px;
 
             li{
@@ -202,12 +210,17 @@
 }
 
 @media (max-width: 576px){
+    .slick-slider .slick-slide{
+        border-radius: 20px;
+    }
+
     .breed_images_slider img{
-        object-fit: contain;
-        border-radius: 0px;
+        object-fit: cover;
+        border-radius: 20px;
     }
 
     #custom_dots{
+        bottom: -15px;
         ul{
             li{
                 width: 10px;
@@ -243,7 +256,15 @@
 }
 
 @media (max-width: 375px){
+    .filters_section.breed_info_page .label:last-child{
+        grid-column: 4 / 7;
+    }
+
     .breed_info{
+        .breed_description{
+            font-size: var(--font-sm);
+        }
+
         .breed_temperament,
         .breed_other_info{
             flex-basis: 100%;

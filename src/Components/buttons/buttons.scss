@@ -13,6 +13,7 @@
     @include buttons-style;
     height: 2.5vw;
     min-height: 35px;
+    max-height: 40px;
     background-color: var(--pink);
     
     i{
@@ -25,7 +26,7 @@
         background-color: var(--red);
 
         i{
-            color: var(--white);
+            color: white;
         }
     }
 }
@@ -39,7 +40,7 @@
     height: 6vw;
     max-height: 40px;
     min-height: 35px;
-    background-color: white;
+    background-color: var(--white-alt);
     font-size: var(--font-md);
     color: var(--red);
 }

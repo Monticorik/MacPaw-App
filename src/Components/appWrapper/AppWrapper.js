@@ -22,39 +22,39 @@ const AppWrapper = (props) => {
     return (
         <div className='right_side'>
             <main>
-            <section className='search_block'>
+                <section className='search_block'>
                     <button className="menu"
                             onClick={onMenuClick}>
                         <i className="icon_menu"></i>
-                </button>
-                <div className="search_input">
-                    <form onSubmit={onSubmitHandler}>
-                        <input type="text" placeholder="Search for breeds by name"/>
-                        <button className="search_button"
-                                    type="submit">
-                                <i className="icon_search"></i>
-                        </button>
-                    </form>
-                </div>
-                <NavLink to="/likes" 
-                         className="likes"
-                         tabIndex={withoutTabIndex === 'likes' ? -1 : null}>
-                    <i className="icon_like"></i>
-                </NavLink>
-                <NavLink to="/favourites" 
-                         className="favourites"
-                         tabIndex={withoutTabIndex === 'favourites' ? -1 : null}>
-                    <i className="icon_favourite"></i>
-                </NavLink>
-                <NavLink to="/dislikes" 
-                         className="dislikes"
-                         tabIndex={withoutTabIndex === 'dislikes' ? -1 : null}>
-                    <i className="icon_dislike"></i>
-                </NavLink>
-            </section>
-            <section className='main_block'>
-                {props.children}
-            </section>
+                    </button>
+                    <div className="search_input">
+                        <form onSubmit={onSubmitHandler}>
+                            <input type="text" placeholder="Search for breeds by name"/>
+                            <button className="search_button"
+                                        type="submit">
+                                    <i className="icon_search"></i>
+                            </button>
+                        </form>
+                    </div>
+                    <NavLink to="/likes" 
+                            className="likes"
+                            tabIndex={withoutTabIndex === 'likes' ? -1 : null}>
+                        <i className="icon_like"></i>
+                    </NavLink>
+                    <NavLink to="/favourites" 
+                            className="favourites"
+                            tabIndex={withoutTabIndex === 'favourites' ? -1 : null}>
+                        <i className="icon_favourite"></i>
+                    </NavLink>
+                    <NavLink to="/dislikes" 
+                            className="dislikes"
+                            tabIndex={withoutTabIndex === 'dislikes' ? -1 : null}>
+                        <i className="icon_dislike"></i>
+                    </NavLink>
+                </section>
+                <section className='main_block'>
+                    {props.children}
+                </section>
             </main>
         </div>
     );
