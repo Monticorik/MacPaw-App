@@ -1,42 +1,43 @@
-import { useNavigate } from "react-router-dom";
+import { useRouter } from 'next/router';
 import PropTypes from 'prop-types';
 
-import "./buttons.scss";
+import styles from "./buttons.module.scss";
 
 const BackButton = () => {
-    const navigate = useNavigate();
+    const router = useRouter();
 
     const onGoBack = () => {
-        navigate(-1);
+        router.back();
     };
 
     return(
-        <button className="back_button"
+        <button className={styles.back_button}
                 onClick={onGoBack}>
-            <i className="icon_arrow_left"></i>
+            <i className='icon_arrow_left'></i>
         </button>
     );
 };
 
-const CloseButton = ({close}) => {
+const CloseButton = ({close, className}) => {
     return(
-        <button className="close_button"
+        <button className={`${styles.close_button} ${className}`}
             onClick={close}>
-            <i className="icon_close"></i>
+            <i className='icon_close'></i>
         </button>
     );
 };
 
 CloseButton.propTypes = {
-    close: PropTypes.func
+    close: PropTypes.func,
+    className: PropTypes.string
 };
 
 const UpdateButton = (props) => {
-    const {updateFunction} = props;
+    const {className, updateFunction} = props;
     return(
-        <button className="update_button"
+        <button className={`${styles.update_button} ${className}`}
             onClick={updateFunction}>
-            <i className="icon_update"></i>
+            <i className='icon_update'></i>
         </button>
     );
 };
@@ -46,6 +47,3 @@ UpdateButton.propTypes = {
 };
 
 export {BackButton, CloseButton, UpdateButton};
-
-
-

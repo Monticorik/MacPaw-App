@@ -1,10 +1,11 @@
 import { useState, useRef} from "react";
-import useCatServices from "../../services/CatServices";
+import useCatServices from "@/services/CatServices";
 import PropTypes from "prop-types";
+import Image from 'next/image';
 
-import { CloseButton } from "../buttons/Buttons";
+import { CloseButton } from "@/components/buttons/Buttons";
 
-import './uploadImageModal.scss';
+import styles from './uploadImageModal.module.scss';
 
 const UploadImageModal = ({isOpen, closeModal}) => {
     const {uploadImage, error, clearError} = useCatServices();
@@ -21,8 +22,7 @@ const UploadImageModal = ({isOpen, closeModal}) => {
         clearError();
         setFormSubmit(false);
         setResponceGot(false);
-        setImage(userImage);
-        
+        setImage(userImage); 
     };
 
     const onClose = () => {
@@ -51,19 +51,20 @@ const UploadImageModal = ({isOpen, closeModal}) => {
     };
 
     return isOpen ? (
-        <div className="upload_image modal">
+        <div className={`${styles.upload_image} ${styles.modal}`}>
             <CloseButton
-                close={onClose}/>
-            <form className="upload_image_form"
+                close={onClose}
+                className={styles.close_button}/>
+            <form className={styles.upload_image_form}
                 onSubmit={onUploadImage}>
-                <div className="form_text">
+                <div className={styles.form_text}>
                     <h1>Upload a .jpg, .png or .gif Cat Image</h1>
                     <span>Any uploads must comply with the <a href="https://thecatapi.com/privacy">upload guidelines</a> or face deletion.</span>
                 </div>
                 <label
                     ref={label}>
-                    {image ? <img src={URL.createObjectURL(image)} alt='cat'/> : <NoFotoSvg/>}
-                    <span className={`input_placeholder ${image ? 'hide' : ''}`}>
+                    {image ? <Image src={URL.createObjectURL(image)} width={100} height={100} priority alt='cat'/> : <NoFotoSvg/>}
+                    <span className={`${styles.input_placeholder} ${image ? styles.hide : ''}`}>
                           <strong>Drag here</strong> your file or <strong>Click here</strong> to upload
                     </span>
                     <input  type="file" 
@@ -71,16 +72,16 @@ const UploadImageModal = ({isOpen, closeModal}) => {
                             ref={input}
                             onChange={uploadImageHandler}/>    
                 </label>
-                <span className="user_image_name">{image ? `Image File Name: ${image.name}` : 'No file selected'}</span>
-                <button className={image && !isResponseGoted ? '' : 'hide'}  
+                <span className={styles.user_image_name}>{image ? `Image File Name: ${image.name}` : 'No file selected'}</span>
+                <button className={styles.image && !isResponseGoted ? '' : styles.hide}  
                         type="submit"
                         disabled={isFormSubmit}>
                             <Loader
                                 visible={isFormSubmit}/>
                             {isFormSubmit ? 'uploading' : 'upload photo'}
                 </button>
-                <div className={`upload_log ${isResponseGoted ? '' : 'hide'}`}>
-                    <i className={`icon_${error ? 'fail' : 'ok'}`}></i>
+                <div className={`${styles.upload_log} ${isResponseGoted ? '' : styles.hide}`}>
+                    <i className={`icon_${error ? 'fail' : 'ok'} ${styles[`icon_${error ? 'fail' : 'ok'}`]}`}></i>
                     <span>{error ? 'No Cat found - try a different one' : 'Thanks for the Upload - Cat found!'}</span>
                 </div>
             </form>
@@ -95,10 +96,10 @@ UploadImageModal.propTypes = {
 
 const Loader = ({visible}) => {
     return (
-        <div className={`loader_wrapper ${visible ? '' : 'hide'}`}>
-            <div className="loader">
-                <div className="loader">
-                    <div className="loader">
+        <div className={`${styles.loader_wrapper} ${visible ? '' : styles.hide}`}>
+            <div className={styles.loader}>
+                <div className={styles.loader}>
+                    <div className={styles.loader}>
                     </div>
                 </div>
             </div>

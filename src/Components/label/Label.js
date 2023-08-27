@@ -1,14 +1,14 @@
-import { useLocation } from "react-router-dom";
+import { useRouter } from 'next/router';
 import PropTypes from 'prop-types';
 
-import './label.scss';
+import styles from './label.module.scss';
 
 const Label = (props) => {
-    const defaultLabel = useLocation().pathname.slice(1);
+    const defaultLabel = useRouter().asPath.slice(1);
     const {label, color = "red",} = props;
 
     return(
-        <div className="label"
+        <div className={`${styles.label} ${props.className || ''}`}
              data-color={color}>
             <span>{label || defaultLabel}</span>
         </div>

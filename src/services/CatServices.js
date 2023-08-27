@@ -1,7 +1,5 @@
 import useHttp from "../hooks/http.hook";
 
-import noFoto from '../resources/img/no-foto.svg';
-
 const useCatServices = () => {
     const {loading, error, request, clearError} = useHttp();
     const _apiBase = 'https://api.thecatapi.com/v1/';
@@ -91,12 +89,9 @@ const useCatServices = () => {
         return {
             id: breed.id,
             name: breed.name,
-            src: breed.image ? breed.image.url : noFoto,
-            description: breed.description,
-            temperament: breed.temperament,
-            origin: breed.origin ,
-            weight: breed.weight.metric + ' kgs',
-            lifeSpan: breed.life_span + ' years',
+            src: breed.image ? breed.image.url : null,
+            width: breed.image?.width || 100,
+            height: breed.image?.height || 100 
         };
     };
 
@@ -110,6 +105,8 @@ const useCatServices = () => {
             origin: breed.breeds[0].origin ,
             weight: breed.breeds[0].weight.metric + ' kgs',
             lifeSpan: breed.breeds[0].life_span + ' years',
+            width: breed.width,
+            height: breed.height
         };
     };
 
@@ -117,13 +114,15 @@ const useCatServices = () => {
         return {
             id: image.id,
             src: image.url,
+            width: image.width,
+            height: image.height
         };
     };
 
     const _transformVoting = (vote) => {
         return {
             id: vote.id,
-            createdTime: vote.created_at.match(/(\d+:\d+)/gi)[0],
+            createdTime: vote.created_at,
             value: vote.value === 1 ? 'like' : vote.value === 0 ? 'dislike' : 'favourite',
             imageId: vote.image.id,
             src: vote.image.url,

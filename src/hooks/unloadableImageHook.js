@@ -80,6 +80,7 @@ const useUnloadableImage = (imageArr) => {
 
     useEffect(() => {
         onCutImagesArray();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [images]);
 
     return {viewImages, breedsOptions, sort, reversSort, prevDisabled, nextDisabled,

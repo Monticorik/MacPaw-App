@@ -1,18 +1,15 @@
-import { NavLink } from 'react-router-dom';
+import Link from 'next/link';
+import Image from 'next/image';
 
-import { CloseButton } from '../buttons/Buttons';
+import { CloseButton } from '@/components/buttons/Buttons';
 
-import voting from '../../resources/img/vote-table.svg';
-import breed from '../../resources/img/pet-breeds.svg';
-import galery from '../../resources/img/images-search.svg';
-
-import './appNav.scss';
+import styles from './appNav.module.scss';
 
 const AppNav = () => {
 
-    const menuArguments = [{src: voting, text: 'voting', color: 'purple'},
-                           {src: breed, text: 'breed', color: 'green'},
-                           {src: galery, text: 'galery', color: 'orange'}];
+    const menuArguments = [{src: '/vote-table.svg', text: 'voting', color: 'purple'},
+                           {src: '/pet-breeds.svg', text: 'breed', color: 'green'},
+                           {src: '/images-search.svg', text: 'galery', color: 'orange'}];
 
     const closeMenu = () => {
         document.querySelector('.left_side').style.display = '';
@@ -22,36 +19,40 @@ const AppNav = () => {
     const getMenuList = () => {
         const menuList = menuArguments.map((item, index) => {
                 return(
-                    <li className="menu_option" 
+                    <li className={styles.menu_option}
                         roll={item.text + '_option'}
                         key={index}>
-                        <NavLink to={item.text} id={item.text}
-                            className="menu_button"
-                            href='#'
-                            onClick={closeMenu}>
-                            <div className="menu_img"
+                        <Link href={`/${item.text}`}>
+                            <div className={styles.menu_img}
                                 style={{backgroundColor: `var(--${item.color})`}}>
-                                <img arya-hidden="true" src={item.src} alt={item.text}/>
+                                <Image 
+                                    arya-hidden="true" 
+                                    src={item.src} 
+                                    width={100}
+                                    height={100}
+                                    priority
+                                    alt={item.text}/>
                             </div>
-                            <div className="menu_text">
+                            <div className={styles.menu_text}>
                                 <span>{item.text}</span>
                             </div>
-                        </NavLink>
+                        </Link>
                     </li>
                 );
             });
         return (
-            <ul className="menu">
+            <ul className={styles.menu}>
                 {menuList}
             </ul>
         );
     };
 
     return (
-        <nav id="main_menu">
+        <nav id={styles.main_menu}>
                 <CloseButton
-                    close={closeMenu}/> 
-                <span className="start_text">Lets start using The Cat API</span>
+                    close={closeMenu}
+                    className={styles.close_button}/> 
+                <span className={styles.start_text}>Lets start using The Cat API</span>
                 {getMenuList()}
         </nav>
     );

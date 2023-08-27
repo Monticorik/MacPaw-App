@@ -1,17 +1,17 @@
-import { NavLink, useNavigate } from 'react-router-dom';
+import Link from 'next/link';
+import { useRouter } from 'next/router';
 import PropTypes from 'prop-types';
 
-import './appWrapper.scss';
+import styles from './appWrapper.module.scss';
 
 
 const AppWrapper = (props) => {
-    const {withoutTabIndex} = props;
-    const navigate = useNavigate();
+    const router = useRouter();
 
     const onSubmitHandler = (event) => {
         event.preventDefault();
 
-        navigate(`/search/${event.target[0].value}`);
+        router.push(`/search/${event.target[0].value}`);
     };
 
     const onMenuClick = () => {
@@ -20,39 +20,39 @@ const AppWrapper = (props) => {
     };
 
     return (
-        <div className='right_side'>
+        <div className={"right_side"}>
             <main>
-                <section className='search_block'>
-                    <button className="menu"
+                <section className={styles.search_block}>
+                    <button className={styles.menu}
                             onClick={onMenuClick}>
-                        <i className="icon_menu"></i>
+                        <i className='icon_menu'></i>
                     </button>
-                    <div className="search_input">
+                    <div className={styles.search_input}>
                         <form onSubmit={onSubmitHandler}>
                             <input type="text" placeholder="Search for breeds by name"/>
-                            <button className="search_button"
+                            <button className={styles.search_button}
                                         type="submit">
-                                    <i className="icon_search"></i>
+                                    <i className='icon_search'></i>
                             </button>
                         </form>
                     </div>
-                    <NavLink to="/likes" 
-                            className="likes"
-                            tabIndex={withoutTabIndex === 'likes' ? -1 : null}>
-                        <i className="icon_like"></i>
-                    </NavLink>
-                    <NavLink to="/favourites" 
-                            className="favourites"
-                            tabIndex={withoutTabIndex === 'favourites' ? -1 : null}>
-                        <i className="icon_favourite"></i>
-                    </NavLink>
-                    <NavLink to="/dislikes" 
-                            className="dislikes"
-                            tabIndex={withoutTabIndex === 'dislikes' ? -1 : null}>
-                        <i className="icon_dislike"></i>
-                    </NavLink>
+                    <Link href="/likes"
+                        className={`${styles.likes} ${router.pathname === '/likes' ? styles.active : ''}`}
+                        tabIndex={router.pathname === '/likes' ? -1 : 0}> 
+                            <i className='icon_like'></i>
+                    </Link>
+                    <Link href="/favourites" 
+                        className={`${styles.favourites} ${router.pathname === '/favourites' ? styles.active : ''}`}
+                        tabIndex={router.pathname === '/favourites' ? -1 : 0}>
+                            <i className='icon_favourite'></i>
+                    </Link>
+                    <Link href="/dislikes"
+                        className={`${styles.dislikes} ${router.pathname === '/dislikes' ? styles.active : ''}`}
+                        tabIndex={router.pathname === '/dislikes' ? -1 : 0}>
+                            <i className='icon_dislike'></i>
+                    </Link>
                 </section>
-                <section className='main_block'>
+                <section className={styles.main_block}>
                     {props.children}
                 </section>
             </main>
@@ -61,7 +61,6 @@ const AppWrapper = (props) => {
 };
 
 AppWrapper.propTypes = {
-    withoutTabIndex: PropTypes.bool,
     children: PropTypes.node,
 };
 

@@ -1,13 +1,13 @@
-import { Link, useLocation } from 'react-router-dom';
 import { useState } from 'react';
+import Link from 'next/link';
+import { useRouter } from 'next/router';
 
 import AppNav from '../appNav/AppNav';
 
-import './appHeader.scss';
+import styles from'./appHeader.module.scss';
 
 const AppHeader = () => {
-    const location = useLocation();
-    const isFirstPage = location.pathname === '/';
+    const isFirstPage = useRouter().pathname === '/';
     const [isChecked, setIsCheked] = useState(false);
 
     const onSwitchTheme = () => {
@@ -26,10 +26,10 @@ const AppHeader = () => {
     };
 
     return (
-        <div className={`left_side ${isFirstPage ? 'first_page' : ''}`}>
+        <div className={`left_side ${isFirstPage ? 'first_page' : ''} ${isFirstPage ? styles.first_page : ''}`}>
             <header>
-                <div id="logo">
-                    <Link to="/">
+                <div id={styles.logo}>
+                    <Link href="/">
                         <svg width="107" height="24" viewBox="0 0 107 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M7.84082 12.4577C7.84082 9.90778 9.9079 7.8407 12.4578 7.8407L19.3832 7.8407C21.9331 7.8407 24.0002 9.90778 24.0002 12.4577C24.0002 15.0075 21.9331 17.0746 19.3832 17.0746H12.4578C9.9079 17.0746 7.84082 15.0075 7.84082 12.4577Z" fill="#FF868E"/>
                             <path d="M12.4578 24C9.9079 24 7.84082 21.9329 7.84082 19.383L7.84082 12.4576C7.84082 9.90772 9.9079 7.84063 12.4578 7.84063C15.0077 7.84063 17.0747 9.90772 17.0747 12.4576V19.383C17.0747 21.9329 15.0077 24 12.4578 24Z" fill="#FF868E"/>
@@ -38,7 +38,7 @@ const AppHeader = () => {
                             <path d="M19.6218 2.8856C19.6218 4.47927 18.3299 5.7712 16.7362 5.7712C15.1425 5.7712 13.8506 4.47927 13.8506 2.8856C13.8506 1.29193 15.1425 0 16.7362 0C18.3299 0 19.6218 1.29193 19.6218 2.8856Z" fill="#FF868E"/>
                             <path d="M5.7712 8.65684C5.7712 10.2505 4.47927 11.5424 2.8856 11.5424C1.29193 11.5424 0 10.2505 0 8.65684C0 7.06317 1.29193 5.77124 2.8856 5.77124C4.47927 5.77124 5.7712 7.06317 5.7712 8.65684Z" fill="#FF868E"/>
 
-                            <g className="svg_logo_text">
+                            <g className={styles.svg_logo_text}>
                                 <path d="M31.8945 18.8V6.43518H37.6929C38.6657 6.43518 39.4593 6.62078 40.0737 6.99198C40.7009 7.36318 41.1681 7.86878 41.4753 8.50878C41.7825 9.14878 41.9361 9.87838 41.9361 10.6976C41.9361 11.5296 41.7569 12.2656 41.3985 12.9056C41.0529 13.5456 40.5537 14.0448 39.9009 14.4032C39.2609 14.7488 38.4993 14.9216 37.6161 14.9216H34.4865V18.8H31.8945ZM34.4865 12.8672H37.0785C37.8209 12.8672 38.3777 12.6752 38.7489 12.2912C39.1329 11.8944 39.3249 11.3632 39.3249 10.6976C39.3249 9.98078 39.1457 9.43678 38.7873 9.06558C38.4289 8.68158 37.8913 8.48958 37.1745 8.48958H34.4865V12.8672Z"/>
                                 <path d="M48.1119 18.992C46.5375 18.992 45.2895 18.6016 44.3679 17.8208C43.4463 17.0272 42.9855 15.8304 42.9855 14.2304C42.9855 12.784 43.3695 11.6384 44.1375 10.7936C44.9183 9.93598 46.0767 9.50718 47.6127 9.50718C49.0207 9.50718 50.0959 9.87838 50.8383 10.6208C51.5935 11.3504 51.9711 12.3104 51.9711 13.5008V15.152L45.3855 15.152C45.5263 15.8816 45.8591 16.3808 46.3839 16.6496C46.9215 16.9184 47.6767 17.0528 48.6495 17.0528C49.1359 17.0528 49.6287 17.008 50.1279 16.9184C50.6399 16.8288 51.0751 16.7136 51.4335 16.5728V18.416C51.0111 18.608 50.5183 18.7488 49.9551 18.8384C49.3919 18.9408 48.7775 18.992 48.1119 18.992ZM45.3855 13.5584H49.7055V13.0592C49.7055 12.5344 49.5519 12.1248 49.2447 11.8304C48.9375 11.5232 48.4191 11.3696 47.6895 11.3696C46.8319 11.3696 46.2303 11.5424 45.8847 11.888C45.5519 12.2336 45.3855 12.7904 45.3855 13.5584Z"/>
                                 <path d="M57.3854 18.992C56.3358 18.992 55.555 18.7168 55.043 18.1664C54.5438 17.616 54.2942 16.8672 54.2942 15.92V11.696H53.0078V9.69918H54.2942V7.74078L56.8862 6.97278V9.69918H59.1902L59.0366 11.696H56.8862V15.7472C56.8862 16.2464 57.0014 16.592 57.2318 16.784C57.4622 16.9632 57.8206 17.0528 58.307 17.0528C58.6654 17.0528 59.0366 16.9888 59.4206 16.8608V18.6464C59.139 18.7616 58.8318 18.8448 58.499 18.896C58.1662 18.96 57.795 18.992 57.3854 18.992Z"/>
@@ -50,14 +50,14 @@ const AppHeader = () => {
                         </svg>
                     </Link>
                 </div>
-                <div className="theme_switcher">
+                <div className={styles.theme_switcher}>
                     <label htmlFor="switch_input">
-                        <i className="icon_closed_eye" 
+                        <i className={`icon_closed_eye ${styles.icon_closed_eye}`}
                             style={{'display': !isChecked ? 'none' : 'block'}}></i>
-                        <i className="icon_eye"
+                        <i className={`icon_eye ${styles.icon_eye}`}
                             style={{'display': isChecked ? 'none' : 'block'}}></i>
                     </label>
-                    <div className="theme_switcher_input"
+                    <div className={styles.theme_switcher_input}
                         tabIndex="0"
                         onKeyDown={onKeyDown}>
                         <input id="switch_input"
@@ -66,10 +66,10 @@ const AppHeader = () => {
                                checked={isChecked}
                                onChange={onSwitchTheme}
                                tabIndex="-1"/>
-                        <span className="slider round"></span> 
+                        <span className={`${styles.slider} ${styles.round}`}></span> 
                     </div>
                 </div>  
-                <div id="greating_text">
+                <div id={styles.greating_text}>
                     <h1>Hi!👋</h1>
                     <h2>Welcome to MacPaw Bootcamp 2023</h2>
                 </div>

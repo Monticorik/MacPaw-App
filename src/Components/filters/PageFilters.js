@@ -4,21 +4,18 @@
 import PropTypes from 'prop-types';
 import Select from 'react-select';
 
-import "./pageFilters.scss";
-
 const LimitFilter = (props) => {
-    const {onChooseLimit, label} = props;
+    const {onChooseLimit, label, className, pageName} = props;
     const limitOptions = [
         { value: '5', label: 'Limit: 5', },
         { value: '10', label: 'Limit: 10', },
         { value: '15', label: 'Limit: 15', },
         { value: '20', label: 'Limit: 20', },
     ];
-
     return (
-        <div id="limit_filter">
-            {label ? <label htmlFor="limit">Limit</label> : null}
-            <Select id='limit'
+        <div className={`limit_filter ${className} ${pageName || ''}`}>
+            {label ? <label className='filter_label' htmlFor="limit">Limit</label> : null}
+            <Select instanceId='limit'
                     className='limit'
                     classNamePrefix={'limit'}
                     placeholder="Limit"
@@ -35,14 +32,16 @@ const LimitFilter = (props) => {
 LimitFilter.propTypes = {
     label: PropTypes.bool,
     onChooseLimit: PropTypes.func,
+    className: PropTypes.string, 
+    pageName: PropTypes.string
 };
 
 const BreedsFilter = (props) => {
-    const {onChooseBreed, breedsOptions, label} = props;
+    const {onChooseBreed, breedsOptions, label, className, pageName} = props;
     return (
-        <div id='breeds_filter'>
-            {label ? <label htmlFor="breeds">Breeds</label> : null}
-            <Select id='breeds'
+        <div className={`breeds_filter ${className} ${pageName || ''}`}>
+            {label ? <label className='filter_label' htmlFor="breeds">Breeds</label> : null}
+            <Select instanceId='breeds'
                     className='breeds'
                     classNamePrefix={'breeds'}
                     placeholder="Breeds"
@@ -61,10 +60,12 @@ BreedsFilter.propTypes = {
     label: PropTypes.bool,
     onChooseBreed: PropTypes.func,
     breedsOptions: PropTypes.arrayOf(PropTypes.object),
+    className: PropTypes.string, 
+    pageName: PropTypes.string
 };
 
 const OrderFilter = (props) => {
-    const {onChooseOrder, label} = props;
+    const {onChooseOrder, label, className, pageName} = props;
     const orderOptions = [
         { value: 'RANDOM', label: 'Random', },
         { value: 'DESC', label: 'Desc', },
@@ -72,9 +73,9 @@ const OrderFilter = (props) => {
     ];
 
     return (
-        <div id='order_filter'>
-            {label ? <label htmlFor="order">Order</label> : null}
-            <Select id='order'
+        <div className={`order_filter ${className} ${pageName || ''}`}>
+            {label ? <label className='filter_label' htmlFor="order">Order</label> : null}
+            <Select instanceId='order'
                     className='order'
                     classNamePrefix={'order'}
                     placeholder="Order"
@@ -94,7 +95,7 @@ OrderFilter.propTypes = {
 };
 
 const TypeFilter = (props) => {
-    const {onChooseType, label} = props;
+    const {onChooseType, label, className, pageName} = props;
     const typeOptions = [
         { value: 'gif,jpg,png', label: 'All', },
         { value: 'jpg,png', label: 'Static', },
@@ -102,9 +103,9 @@ const TypeFilter = (props) => {
     ];
 
     return (
-        <div id="type_filter">
-            {label ? <label htmlFor="type">Type</label> : null}
-            <Select id='type'
+        <div className={`type_filter ${className} ${pageName || ''}`}>
+            {label ? <label className='filter_label' htmlFor="type">Type</label> : null}
+            <Select instanceId='type'
                     className='type'
                     classNamePrefix={'type'}
                     placeholder="Type"
@@ -120,7 +121,9 @@ const TypeFilter = (props) => {
 
 TypeFilter.propTypes = {
     onChooseType: PropTypes.func,
-    label: PropTypes.bool
+    label: PropTypes.bool,
+    className: PropTypes.string, 
+    pageName: PropTypes.string
 };
 
 

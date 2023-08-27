@@ -1,11 +1,13 @@
-import { Link, useLocation } from "react-router-dom";
+import Link from 'next/link';
+import { useRouter } from 'next/router';
 import PropTypes from 'prop-types';
+import Image from 'next/image';
 
-import "./gridImageSection.scss";
+import styles from "./gridImageSection.module.scss";
 
 const GridImageSection = (props) => {
     const {viewImages, onFigcaptionClick} = props;
-    const pageName = useLocation().pathname.slice(1);
+    const pageName = useRouter().asPath.slice(1);
 
     const setImagesBlock = () => {
         const images = [];
@@ -27,7 +29,7 @@ const GridImageSection = (props) => {
     const imageListHandler = (imageList, index) => {
         const images = imageList.map(image => {
                                 return(
-                                    <div className="grid_img"
+                                    <div className={styles.grid_img}
                                         key={image.id}>
                                         {pageName === 'breed' || /search/.test(pageName) ? <ViewBreedImage breed={image}/> :
                                          pageName === 'galery' ? <ViewGaleryImage image={image}/> :
@@ -37,7 +39,7 @@ const GridImageSection = (props) => {
                         });
 
         return(
-            <div className="images_block"
+            <div className={styles.images_block}
                  key={index}>
                 {images}
             </div>
@@ -45,12 +47,17 @@ const GridImageSection = (props) => {
     };
 
     const ViewBreedImage = ({breed}) => {
-        const {id, name, src} = breed;
+        const {id: breedID, name, src, width, height} = breed;
         return (
-            <Link to={`/breed/${id}`}>
+            <Link href={`/breed/${breedID}`}>
                 <figure>
-                    <img src={src} alt={name}/>
-                    <figcaption className="bottom">{name}</figcaption>
+                    <Image 
+                        src={src || '/no-foto.svg'} 
+                        alt={name}
+                        width={width || 100}
+                        height={height || 100}
+                        priority/>
+                    <figcaption className={styles.bottom}>{name}</figcaption>
                 </figure>
             </Link>
         );
@@ -61,13 +68,18 @@ const GridImageSection = (props) => {
     };
 
     const ViewGaleryImage = ({image}) => {
-        const {src, id} = image;
+        const {src, id, width, height} = image;
         return (
             <figure>
-                <img src={src} alt='cat'/>
-                <figcaption className="center"
+                <Image 
+                    src={src || '/no-foto.svg'} 
+                    alt='cat'
+                    width={width || 100}
+                    height={height || 100}
+                    priority/>
+                <figcaption className={styles.center}
                             onClick={() => onFigcaptionClick(id)}>
-                    <i className="icon_favourite"></i>
+                    <i className='icon_favourite'></i>
                 </figcaption>
             </figure>
         );
@@ -79,11 +91,16 @@ const GridImageSection = (props) => {
     };
 
     const ViewVotingImage = ({image}) => {
-        const {src, id, value} = image;
+        const {src, id, value, width, height} = image;
         return (
             <figure>
-                <img src={src} alt='cat'/>
-                <figcaption className="center"
+                <Image 
+                    src={src || '/no-foto.svg'}
+                    alt='cat'
+                    width={width || 100}
+                    height={height || 100}
+                    priority/>
+                <figcaption className={styles.center}
                             onClick={() => onFigcaptionClick(id)}>
                     <i className={`icon_${value}`}></i>
                 </figcaption>
